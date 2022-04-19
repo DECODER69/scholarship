@@ -1,5 +1,5 @@
 body {
-    height: 160vh;
+    height: 250vh;
     background-color: #ffffff;
 }
 
@@ -16,11 +16,11 @@ body {
     border: solid 1px #000000;
     background-color: rgb(255, 255, 255);
     padding: 10px;
-    height: 150vh;
+    height: 227vh;
 }
 
 .header {
-    text-align: center;
+    text-align: left;
 }
 
 
@@ -230,3 +230,125 @@ body {
 
 
 /* EOF DIVISION 2 */
+
+
+/* DIVISION 3 */
+
+.left3 {
+    width: 50%;
+    float: left;
+}
+
+.right3 {
+    width: 50%;
+    float: right;
+}
+
+.father {
+    font-size: 15px;
+    height: 25px;
+    width: 350px;
+    float: right;
+    margin-right: 30px;
+}
+
+.fcontact {
+    font-size: 15px;
+    height: 25px;
+    width: 350px;
+    float: right;
+    margin-right: 30px;
+}
+
+.foccupation {
+    font-size: 15px;
+    height: 25px;
+    width: 350px;
+    float: right;
+    margin-right: 30px;
+}
+
+.mother {
+    font-size: 15px;
+    height: 25px;
+    width: 350px;
+    float: right;
+    margin-right: 30px;
+}
+
+.mcontact {
+    font-size: 15px;
+    height: 25px;
+    width: 350px;
+    float: right;
+    margin-right: 30px;
+}
+
+.moccupation {
+    font-size: 15px;
+    height: 25px;
+    width: 350px;
+    float: right;
+    margin-right: 30px;
+}
+
+.guardian {
+    font-size: 15px;
+    height: 25px;
+    width: 350px;
+    float: right;
+    margin-right: 30px;
+}
+
+.gcontact {
+    font-size: 15px;
+    height: 25px;
+    width: 350px;
+    float: right;
+    margin-right: 30px;
+}
+
+.goccupation {
+    font-size: 15px;
+    height: 25px;
+    width: 350px;
+    float: right;
+    margin-right: 30px;
+}
+
+.income {
+    font-size: 15px;
+    height: 30px;
+    width: 320px;
+    float: right;
+    margin-right: 30px;
+}
+
+.submit {
+    float: right;
+    height: 60px;
+    width: 100px;
+    color: #fbaa3f;
+    font-size: 20px;
+    font-weight: bolder;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.sb {
+    float: right;
+    font-size: 50px;
+    color: #fbaa3f;
+    background-color: #c7232b;
+}
+
+.file {
+    font-size: 15px;
+    height: 30px;
+    width: 320px;
+    float: right;
+    margin-right: 30px;
+}
+
+
+/* EOF DIVISION3 */

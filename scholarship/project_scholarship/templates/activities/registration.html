@@ -20,7 +20,7 @@
         <form action="#" method="POST">
             {% csrf_token %}
 
-            <h1 class="header"><i class="fa-solid fa-user" style="color: #c49a02;"></i> Student Registration Form</h1>
+            <h1 class="header"><i class="fa-solid fa-user" style="color: #fbaa3f"></i> Personal Information</h1>
             <hr>
             <br>
             <div class="one">
@@ -185,6 +185,90 @@
 
             </div><br><br>&nbsp;<br><br>&nbsp;<br><br>&nbsp;<br><br>
             <hr>
+            <h1 class="header"><i class="fa-solid fa-users" style="color: #fbaa3f"></i> Family Background</h1>
+
+            <hr>
+            <br>
+            <div class="division3">
+                <div class="left3">
+                    <div>
+                        <p class="perma">FATHER</p>
+                        <label for="father">Name:</label>
+                        <input type="text" class="father" name="father" placeholder="Father's Name">
+                    </div><br>
+                    <div>
+                        <label for="fcontact">Contact Number:</label>
+                        <input type="text" class="fcontact" name="fcontact" placeholder="Father's contact number">
+
+                    </div><br>
+                    <div>
+                        <label for="faccupation">Occupation:</label>
+                        <input type="text" name="foccupation" class="foccupation" placeholder="Father's Work">
+                    </div>
+
+
+
+
+                </div>
+                <div class="right3">
+                    <div>
+                        <p class="perma">MOTHER</p>
+                        <label for="mother">Name:</label>
+                        <input type="text" class="mother" name="mother" placeholder="Mother's Name">
+                    </div><br>
+                    <div>
+                        <label for="mcontact">Contact Number:</label>
+                        <input type="text" class="mcontact" name="mcontact" placeholder="Mother's contact number">
+
+                    </div><br>
+                    <div>
+                        <label for="maccupation">Occupation:</label>
+                        <input type="text" name="moccupation" class="moccupation" placeholder="Mother's Work">
+                    </div>
+
+                </div>
+
+            </div><br>&nbsp;
+            <hr>
+            <div class="left3">
+                <div>
+                    <p class="perma">GUARDIAN</p>
+                    <label for="guardian">Name:</label>
+                    <input type="text" class="guardian" name="guardian" placeholder="Guardian's Name">
+                </div><br>
+                <div>
+                    <label for="gcontact">Contact Number:</label>
+                    <input type="text" class="gcontact" name="gcontact" placeholder="Guardian's contact number">
+
+                </div><br>
+                <div>
+                    <label for="gaccupation">Occupation:</label>
+                    <input type="text" name="goccupation" class="goccupation" placeholder="Guardian's Work">
+                </div>
+
+            </div><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
+            <hr>
+            <br>
+            <div class="left3">
+                <div>
+                    <label for="income">Income Bracket per year:</label>
+                    <select class="income">
+                                <option value="">Not more than 50k</option>
+                            <option value="">Not more than 100k</option>
+                            <option value="">Not more than 200k</option>
+                            <option value="">Not more than 300k</option>
+                            <option value="">Not more than 400k</option>
+                        </select>
+                </div><br>
+                <div>
+                    <label for="file">1x1 Picture:</label>
+                    <input type="file" class="file" required>
+                </div>
+            </div>
+            <div class="right3">
+                <button class="sb"><input type="submit" class="submit" style="text-decoration: none;" ><i class="fa-solid fa-floppy-disk"></i></button>
+
+            </div>
         </form>
     </div>
 
