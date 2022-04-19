@@ -1,0 +1,194 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="{% static 'css/registration.css' %}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/f7e681d53d.js" crossorigin="anonymous"></script>
+    <title>registration</title>
+</head>
+
+<body>
+
+    <div class="conts">
+        <!-- <div class="col-4">
+            <img class="reg-logo" src="{% static 'image/logo.png' %}">
+
+        </div> -->
+        <form action="#" method="POST">
+            {% csrf_token %}
+
+            <h1 class="header"><i class="fa-solid fa-user" style="color: #c49a02;"></i> Student Registration Form</h1>
+            <hr>
+            <br>
+            <div class="one">
+                <div class="detail8">
+                    <label for="department">Department:</label>
+                    <select class="department" name="department" id="department" required>
+                    <option value="volvo">Highschool</option>
+                    <option value="saab">College</option>
+                  </select>
+                </div><br>
+                <div class="detail6">
+                    <label for="school">School:</label>
+                    <select class="school" name="school" id="school" required>
+                    <option value="volvo">Mindoro State University (Main Campus)</option>
+                    <option value="saab">Mindoro State University (Calapan)</option>
+                  </select>
+                </div><br>
+                <div class="detail3">
+                    <label for="course">Course:</label>
+                    <select class="course" name="course" id="course" required>
+                    <option value="volvo">Information Technology </option>
+                    <option value="saab">Course 2</option>
+                  </select>
+                </div><br>
+                <div class="detail4">
+                    <label for="year">Year:</label>
+                    <select class="year" name="year" id="year" required>
+                    <option value="1st Year">1st Year</option>
+                    <option value="2nd Year">2nd Year</option>
+                  </select>
+                </div>
+            </div><br><br>
+            <hr><br>
+            <br>
+            <div class="two">
+                <div class="name">
+                    <label for="names">Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </label>
+                    <input class="names" type="text" placeholder="First name" required>
+                    <input class="names" type="text" placeholder="Last name" required>
+                    <input class="names" type="text" placeholder="Middle name" required>
+                    <select class="extention" name="extention" id="extention" required>
+                        <option value="1st Year">Jr</option>
+                        <option value="2nd Year">I</option>
+                        <option value="2nd Year">II</option>
+                        <option value="2nd Year">III</option>
+                        <option value="2nd Year">IV</option>
+                        <option value="2nd Year">V</option>
+                      </select>
+                </div>
+
+            </div><br>
+            <div class="division">
+                <div class="left">
+                    <div class="detail1">
+                        <label for="birthday">Birthday:</label>
+                        <input class="birthday" type="date" placeholder="birthdate" name="birthday" required>
+                    </div>
+                    <br>
+                    <div class="detail2">
+                        <label for="birthplace">Birth Place:</label>
+                        <input type="text" class="birthplace" required>
+                    </div>
+                    <br>
+                    <div class="detail10">
+                        <label for="religion">Religion</label>
+                        <select class="religion" required>
+                            <option>Roman Catholic</option>
+                            <option>Jehova's Witness</option>
+                            <option>Buddhist</option>
+                            <option>Dating Daan</option>
+                            <option>Pagano</option>
+                            <option>Atheist</option>
+                            <option>Muslim</option>
+                            <option>Born Again</option>
+                            <option>Baptist</option>
+                            <option>Mormons</option>
+                            <option>Free Methodist</option>
+                            <option>Christian</option>
+                            <option>Protestant</option>
+                            <option>Aglipay</option>
+                            <option>LDS</option>
+                            <option>Seventh Day Adventist</option>
+                            <option>Iglesia Ni Cristo</option>
+                            <option>NA</option>
+                        </select>
+
+                    </div><br>
+                    <div class="details12">
+                        <label for="cpnumber">Cellphone Number:</label>
+                        <input type="text" class="cpnumber" name="cpnumber">
+
+                    </div>
+
+
+                </div>
+                <div class="right">
+                    <div class="detail7">
+                        <label for="gender">Gender:</label>
+                        <select class="gender" name="gender" id="gender" required>
+                        <option value="volvo">Male</option>
+                        <option value="saab">Female</option>
+                      </select>
+                    </div><br>
+                    <div class="detail11">
+                        <label for="age">Age:</label>
+                        <input type="text" name="age" class="age" required>
+                    </div><br>
+                    <div class="detail4">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" class="email" required>
+                    </div><br>
+                    <div class="detail3">
+                        <label for="civil">Civil Status:</label>
+                        <select class="civil">
+                            <option>Single</option>
+                            <option>Married</option>
+                            <option>Legally Separated</option>
+                            <option>Widowed</option>
+
+                        </select>
+                    </div><br>
+                </div>
+
+            </div>
+            <br><br>&nbsp;<br><br>
+            <hr>&nbsp;<br><br>
+            <div class="division2">
+                <p class="perma">Permanent Address</p>
+                <div class="left2">
+                    <div class="unt">
+
+                        <label for="unit">Unit #:</label>
+                        <input type="text" name="unit" class="unit" placeholder="Unit #" required>
+                    </div><br>
+
+
+                    <div class="strt">
+                        <label for="street">Street:</label>
+                        <input type="text" name="street" class="street" placeholder="Street" required>
+                    </div><br>
+                    <div class="brgy">
+                        <label for="barangay">Barangay:</label>
+                        <input type="text" name="barangay" class="barangay" placeholder="Barangay" required>
+
+                    </div>
+
+                </div>
+                <div class="right2">
+                    <div class="muni">
+                        <label for="municipality">Municipality:</label>
+                        <input type="text" class="municipality" required name="municipality" placeholder="Municipality">
+
+                    </div><br>
+                    <div class="prov">
+                        <label for="province">Province</label>
+                        <input type="text" class="province" required name="province" placeholder="Province">
+                    </div>
+
+                </div>
+
+            </div><br><br>&nbsp;<br><br>&nbsp;<br><br>&nbsp;<br><br>
+            <hr>
+        </form>
+    </div>
+
+
+</body>
+
+</html>
