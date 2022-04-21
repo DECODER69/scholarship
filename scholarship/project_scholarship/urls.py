@@ -14,4 +14,7 @@ app_name = 'activities'
 urlpatterns = [
     path('', views.index, name='index'),
     path('registration/', views.registration, name='registration'),
-]
+    path('register/', views.register, name='register'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('navbar/', views.navbar, name='navbar'),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

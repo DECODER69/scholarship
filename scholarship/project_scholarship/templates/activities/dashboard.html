@@ -1,0 +1,202 @@
+<!DOCTYPE html> {% load static %}
+<!-- Coding by CodingLab | www.codinglabweb.com -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--<title>Dashboard Sidebar Menu</title>-->
+</head>
+
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                {% for n in status %}
+                <span class="image">
+                    <img  src="{{n.picture.url}}" alt="profile-pic">
+                </span>
+
+                <div class="text logo-text">
+
+                    <span class="name">{{n.firstname}} {{n.lastname}}</span>
+                    <span class="job" style="text-align:center;">student</span>
+
+                </div>
+                {% endfor %}
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-home-alt icon'></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-edit icon'></i>
+                            <span class="text nav-text">Edit Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Announcements</span>
+                        </a>
+                    </li>
+
+                    <!-- <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-pie-chart-alt icon'></i>
+                            <span class="text nav-text">Analytics</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-heart icon'></i>
+                            <span class="text nav-text">Likes</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-wallet icon'></i>
+                            <span class="text nav-text">Wallets</span>
+                        </a>
+                    </li> -->
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+
+            </div>
+        </div>
+
+    </nav><br>
+
+
+
+
+
+
+    <section class="home">
+        <div class="text" style="color: #387b3a;">Dashboard</div>
+        <hr><br>
+        <div class="top_list">
+            <div class="status"><br>
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAJ5JREFUSEtjZKAxYKSx+QzEWPAf6gh0tbjEUdxMdwscGBgY5jMwMCiQGXQPGBgYEhkYGA7A9KP7AKRAnkzDYdpAZijisgAWrhTagYhbsiIOj+0YET/gFhAbZDCHkuyDoW8BqamJ5CAatQCjNCWqhBxSGW3oRfIHBgYGflKdjab+IXJ9gl7YgSqcBRTUCSDDE/BVOBQ6HlM7MXUyRZYCAHcBLBk7Iv17AAAAAElFTkSuQmCC"
+                />
+
+                <p>PENDING APPLICATIONS</p>
+                <h1>{{s.school}}</h1>
+            </div><br>&nbsp;
+
+            <div class="status1"><br>
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQ5JREFUSEvtlNEVwUAQRW86UIIO6AAVoAIlKAEdKIEK6AAd0IESdMB5zm7Oitns5hzxlfnJR96+u/NmkoKWq2jZnw6QTDgWUQ9YATPncAQ2wCPpWBHEAFdgUNGegckvAGPgFDESQKDssjpYu3gsE8Wk97FStIp15wUWQIJDxGEOaB5WyVydD4FS12QGN3c4ZS6dYn4vRAzQB7bA1LntXTT3wF1RSaPyN/8wrwOkhujnpG1TKZYv8xhAM1i6NkOQtkdD1lN56+lX2TS3AJr+InF9v0keInmZefVsOIO67ame89+DIKroFx4C1PIoFb57fzEiNI+GgGemuZdl/er/CmjYQJ48q808K1vVAZLpvQB1zC8ZDL5OrQAAAABJRU5ErkJggg=="
+                />
+                <p>ACTIVE SCHOLARS</p>
+                <h1>{{s.status}}</h1>
+            </div><br>&nbsp;
+
+        </div>
+
+
+
+        <!-- ####################################### -->
+
+
+
+        <div class="details">
+            <div class="status"><br> {% for s in status %}
+                <h1>{{s.school}}</h1>
+                <p>SCHOOL</p>
+            </div><br>&nbsp;
+            <div class="status1"><br>
+                <h1>{{s.status}}</h1>
+                <p>APPLICATION STATUS</p>
+            </div><br>&nbsp;
+
+            <div class="status2"><br>
+                <h1>{{s.firstname}} {{s.lastname}}</h1>
+                <p>NAME</p>
+
+            </div><br>&nbsp;
+
+            <div class="status2"><br>
+                <h1>{{s.firstname}} {{s.lastname}}</h1>
+                <p>NAME</p>
+                {% endfor %}
+            </div><br>&nbsp;
+        </div>
+
+    </section><br>
+
+
+
+
+    <script>
+        const body = document.querySelector('body'),
+            sidebar = body.querySelector('nav'),
+            toggle = body.querySelector(".toggle"),
+            searchBtn = body.querySelector(".search-box"),
+            modeSwitch = body.querySelector(".toggle-switch"),
+            modeText = body.querySelector(".mode-text");
+
+
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        })
+
+
+
+        modeSwitch.addEventListener("click", () => {
+            body.classList.toggle("dark");
+
+            if (body.classList.contains("dark")) {
+                modeText.innerText = "Light mode";
+            } else {
+                modeText.innerText = "Dark mode";
+
+            }
+        });
+    </script>
+
+</body>
+
+</html>

@@ -17,7 +17,7 @@
             <img class="reg-logo" src="{% static 'image/logo.png' %}">
 
         </div> -->
-        <form action="#" method="POST">
+        <form action="{% url 'activities:register' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
 
             <h1 class="header"><i class="fa-solid fa-user" style="color: #fbaa3f"></i> Personal Information</h1>
@@ -27,20 +27,23 @@
                 <div class="detail8">
                     <label for="department">Department:</label>
                     <select class="department" name="department" id="department" required>
-                    <option value="volvo">Highschool</option>
-                    <option value="saab">College</option>
+                        <option disabled selected>Department</option>
+                    <option value="HighSchool">Highschool</option>
+                    <option value="College">College</option>
                   </select>
                 </div><br>
                 <div class="detail6">
                     <label for="school">School:</label>
                     <select class="school" name="school" id="school" required>
-                    <option value="volvo">Mindoro State University (Main Campus)</option>
+                        <option disabled selected>School</option>
+                    <option value="MINSCAT">Mindoro State University (Main Campus)</option>
                     <option value="saab">Mindoro State University (Calapan)</option>
                   </select>
                 </div><br>
                 <div class="detail3">
                     <label for="course">Course:</label>
                     <select class="course" name="course" id="course" required>
+                        <option disabled selected>Course</option>
                     <option value="volvo">Information Technology </option>
                     <option value="saab">Course 2</option>
                   </select>
@@ -48,9 +51,20 @@
                 <div class="detail4">
                     <label for="year">Year:</label>
                     <select class="year" name="year" id="year" required>
+                        <option disabled selected>Year</option>
                     <option value="1st Year">1st Year</option>
                     <option value="2nd Year">2nd Year</option>
                   </select>
+                </div><br>
+                <div class="idnum">
+                    <label for="username">ID Number: </label>
+                    <input type="text" name="username" class="username" required placeholder="ID Number">
+
+                </div><br>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" name="password1" class="password1" placeholder="Password" id="password1" required><br><br>
+                    <input type="password" name="password2" class="password2" placeholder="Confirm Password" id="password2" required onclick="">
                 </div>
             </div><br><br>
             <hr><br>
@@ -60,9 +74,9 @@
                     <label for="names">Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </label>
-                    <input class="names" type="text" placeholder="First name" required>
-                    <input class="names" type="text" placeholder="Last name" required>
-                    <input class="names" type="text" placeholder="Middle name" required>
+                    <input class="names" type="text" placeholder="First name" required name="firstname">
+                    <input class="names" type="text" placeholder="Last name" required name="lastname">
+                    <input class="names" type="text" placeholder="Middle name" required name="middlename">
                     <select class="extention" name="extention" id="extention" required>
                         <option value="1st Year">Jr</option>
                         <option value="2nd Year">I</option>
@@ -83,13 +97,13 @@
                     <br>
                     <div class="detail2">
                         <label for="birthplace">Birth Place:</label>
-                        <input type="text" class="birthplace" required>
+                        <input type="text" class="birthplace" required name="birthplace">
                     </div>
                     <br>
                     <div class="detail10">
                         <label for="religion">Religion</label>
-                        <select class="religion" required>
-                            <option>Roman Catholic</option>
+                        <select class="religion" required name="religion">
+                            <option value="Roman Catholic">Roman Catholic</option>
                             <option>Jehova's Witness</option>
                             <option>Buddhist</option>
                             <option>Dating Daan</option>
@@ -112,7 +126,7 @@
                     </div><br>
                     <div class="details12">
                         <label for="cpnumber">Cellphone Number:</label>
-                        <input type="text" class="cpnumber" name="cpnumber">
+                        <input type="text" class="cpnumber" name="cellphone">
 
                     </div>
 
@@ -122,8 +136,8 @@
                     <div class="detail7">
                         <label for="gender">Gender:</label>
                         <select class="gender" name="gender" id="gender" required>
-                        <option value="volvo">Male</option>
-                        <option value="saab">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
                       </select>
                     </div><br>
                     <div class="detail11">
@@ -136,11 +150,11 @@
                     </div><br>
                     <div class="detail3">
                         <label for="civil">Civil Status:</label>
-                        <select class="civil">
-                            <option>Single</option>
-                            <option>Married</option>
-                            <option>Legally Separated</option>
-                            <option>Widowed</option>
+                        <select class="civil" name="civil">
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Legally Seperated">Legally Separated</option>
+                            <option value="Widowed">Widowed</option>
 
                         </select>
                     </div><br>
@@ -165,7 +179,7 @@
                     </div><br>
                     <div class="brgy">
                         <label for="barangay">Barangay:</label>
-                        <input type="text" name="barangay" class="barangay" placeholder="Barangay" required>
+                        <input type="text" name="barangay" class="barangay" placeholder="barangay" required>
 
                     </div>
 
@@ -252,26 +266,40 @@
             <div class="left3">
                 <div>
                     <label for="income">Income Bracket per year:</label>
-                    <select class="income">
-                                <option value="">Not more than 50k</option>
-                            <option value="">Not more than 100k</option>
-                            <option value="">Not more than 200k</option>
-                            <option value="">Not more than 300k</option>
-                            <option value="">Not more than 400k</option>
+                    <select class="income" name="income">
+                        <option disabled selected>Select</option>
+                            <option value="less than 50k">Not more than 50k</option>
+                            <option value="less than 100k">Not more than 100k</option>
+                            <option value="less than 200k">Not more than 200k</option>
+                            <option value="less than 300k">Not more than 300k</option>
+                            <option value="400k above">400k Above</option>
                         </select>
                 </div><br>
                 <div>
                     <label for="file">1x1 Picture:</label>
-                    <input type="file" class="file" required>
+                    <input type="file" class="file" name="picture">
                 </div>
             </div>
             <div class="right3">
-                <button class="sb"><input type="submit" class="submit" style="text-decoration: none;" ><i class="fa-solid fa-floppy-disk"></i></button>
+                <button class="sb"><input type="submit"  onclick="Validate()" class="submit" style="text-decoration: none;" ><i class="fa-solid fa-floppy-disk"></i></button>
 
             </div>
         </form>
     </div>
 
+
+
+    <script type="text/javascript">
+        function Validate() {
+            var password = document.getElementById("password1").value;
+            var confirmPassword = document.getElementById("password2").value;
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        }
+    </script>
 
 </body>
 
