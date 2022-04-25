@@ -1,0 +1,40 @@
+body {
+    overflow-x: hidden;
+    width: 100%;
+    /* background: linear-gradient( 106.37deg, #ffe1bc 29.63%, #ffcfd1 51.55%, #f3c6f1 90.85%); */
+}
+
+.details {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.links {
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.links :hover {
+    color: rgb(157, 240, 185);
+}
+
+.totals {
+    background-color: rgb(7, 33, 55);
+    width: 300px;
+    height: 100px;
+    margin: auto;
+    border-radius: 10px;
+}
+
+p {
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.text {
+    font-size: 20px;
+    margin-left: 10px;
+    font-style: italic;
+}

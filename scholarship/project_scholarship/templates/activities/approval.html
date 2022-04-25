@@ -1,0 +1,58 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>approval</title>
+    <link rel="stylesheet" href="{% static 'css/approval.css' %}">
+
+</head>
+
+<body>
+    {% include 'activities/navadmin.html' %}
+    <div class="text">Approval</div>
+    <hr>
+    <div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+
+                    <th scope="col">Full name</th>
+                    <th scope="col">School</th>
+                    <th scope="col">Year/Grade</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Options</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <form action="{% url 'activities:update' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %} {% for k in approvals %}
+                    <tr>
+                        <th scope="row"><a href="{% url 'activities:revprofile' k.id%}" target="__blank">{{k.firstname}} {{k.lastname}}</a></th>
+                        <td>{{k.school}}</td>
+                        <td>{{k.year}}</td>
+                        <td>{{k.course}}</td>
+                        <td>{{k.email}}</td>
+                        <td>
+                            <select name="stats" id="status">
+                                
+                                <option value="PENDING">PENDING</option>
+                                <option value="APPROVED">APPROVED</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="hidden" name="getID" value="{{k.id}}"><button class="update" id="submit" type="submit">Update</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </form>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

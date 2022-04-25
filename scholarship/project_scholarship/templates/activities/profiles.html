@@ -1,0 +1,219 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+
+<body>
+    {% include 'activities/navadmin.html' %}
+    <div class="text">Profiles</div>
+    <hr> {% for d in namess %}
+    <div class="one">
+        <div class="detail8">
+            <label for="department">Department:</label>
+            <input type="text" value="{{d.department}}" readonly>
+        </div><br>
+        <div class="detail6">
+            <label for="school">School:</label>
+            <input type="text" value="{{d.school}}" readonly>
+        </div><br>
+        <div class="detail3">
+            <label for="course">Course:</label>
+            <input type="text" value="{{d.course}}" readonly>
+        </div><br>
+        <div class="detail4">
+            <label for="year">Year:</label>
+            <input type="text" value="{{d.year}}" readonly>
+        </div><br>
+
+
+    </div><br><br>
+    <hr><br>
+    <br>
+    <div class="two">
+        <div class="name">
+            <label for="names">Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </label>
+            <input class="names" type="text" value="{{d.firstname}}" readonly>
+            <input class="names" type="text" value="{{d.lastname}}" readonly>
+            <input class="names" type="text" value="{{d.middlename}}" readonly>
+            <input class="names" type="text" value="{{d.extention}}" readonly>
+        </div>
+
+    </div><br>
+    <div class="division">
+        <div class="left">
+            <div class="detail1">
+                <label for="birthday">Birthday:</label>
+                <input class="birthday" type="text" placeholder="birthdate" name="birthday" value="{{d.birthday}}" readonly>
+            </div>
+            <br>
+            <div class="detail2">
+                <label for="birthplace">Birth Place:</label>
+                <input type="text" class="birthplace" required name="birthplace" value="{{d.birthplace}}" readonly>
+            </div>
+            <br>
+            <div class="detail10">
+                <label for="religion">Religion</label>
+                <input type="text" value="{{d.religion}}" readonly>
+            </div><br>
+            <div class="details12">
+                <label for="cpnumber">Cellphone Number:</label>
+                <input type="text" class="cpnumber" name="cellphone" value="{{d.cellphone}}" readonly>
+
+            </div>
+
+
+        </div>
+        <div class="right">
+            <div class="detail7">
+                <label for="gender">Gender:</label>
+                <input type="text" value="{{d.gender}}" readonly>
+            </div><br>
+            <div class="detail11">
+                <label for="age">Age:</label>
+                <input type="text" name="age" class="age" value="{{d.age}}" readonly>
+            </div><br>
+            <div class="detail4">
+                <label for="email">Email:</label>
+                <input type="email" name="email" class="email" readonly value="{{d.email}}">
+            </div><br>
+            <div class="detail3">
+                <label for="civil">Civil Status:</label>
+                <input type="text" readonly value="{{d.civil}}">
+            </div><br>
+        </div>
+
+    </div>
+    <br><br>&nbsp;<br><br>
+    <hr>&nbsp;<br><br>
+    <div class="division2">
+        <p class="perma">Permanent Address</p>
+        <div class="left2">
+            <div class="unt">
+
+                <label for="unit">Unit #:</label>
+                <input type="text" name="unit" class="unit" placeholder="Unit #" readonly value="{{d.unit}}">
+            </div><br>
+
+
+            <div class="strt">
+                <label for="street">Street:</label>
+                <input type="text" name="street" class="street" placeholder="Street" readonly value="{{d.street}}">
+            </div><br>
+            <div class="brgy">
+                <label for="barangay">Barangay:</label>
+                <input type="text" name="barangay" class="barangay" placeholder="barangay" readonly value="{{d.barangay}}">
+
+            </div>
+
+        </div>
+        <div class="right2">
+            <div class="muni">
+                <label for="municipality">Municipality:</label>
+                <input type="text" class="municipality" required name="municipality" placeholder="Municipality" readonly value="{{d.municipality}}">
+
+            </div><br>
+            <div class="prov">
+                <label for="province">Province</label>
+                <input type="text" class="province" required name="province" placeholder="Province" readonly value="{{d.province}}">
+            </div>
+
+        </div>
+
+    </div><br><br>&nbsp;<br><br>&nbsp;<br><br>&nbsp;<br><br>
+    <hr>
+    <h1 class="header"><i class="fa-solid fa-users" style="color: #fbaa3f"></i> Family Background</h1>
+
+    <hr>
+    <br>
+    <div class="division3">
+        <div class="left3">
+            <div>
+                <p class="perma">FATHER</p>
+                <label for="father">Name:</label>
+                <input type="text" class="father" name="father" placeholder="Father's Name" readonly value="{{d.fname}}">
+            </div><br>
+            <div>
+                <label for="fcontact">Contact Number:</label>
+                <input type="text" class="fcontact" name="fcontact" placeholder="Father's contact number" readonly value="{{d.fcontact}}">
+
+            </div><br>
+            <div>
+                <label for="faccupation">Occupation:</label>
+                <input type="text" name="foccupation" class="foccupation" placeholder="Father's Work" readonly value="{{d.foccupation}}">
+            </div>
+
+
+
+
+        </div>
+        <div class="right3">
+            <div>
+                <p class="perma">MOTHER</p>
+                <label for="mother">Name:</label>
+                <input type="text" class="mother" name="mother" placeholder="Mother's Name" readonly value="{{d.mname}}">
+            </div><br>
+            <div>
+                <label for="mcontact">Contact Number:</label>
+                <input type="text" class="mcontact" name="mcontact" placeholder="Mother's contact number" readonly value="{{d.mcontact}}">
+
+            </div><br>
+            <div>
+                <label for="maccupation">Occupation:</label>
+                <input type="text" name="moccupation" class="moccupation" placeholder="Mother's Work" readonly value="{{d.moccupation}}">
+            </div>
+
+        </div>
+
+    </div><br>&nbsp;
+    <hr>
+    <div class="left3">
+        <div>
+            <p class="perma">GUARDIAN</p>
+            <label for="guardian">Name:</label>
+            <input type="text" class="guardian" name="guardian" placeholder="Guardian's Name" readonly value="d.gname"> </div><br>
+        <div>
+            <label for="gcontact">Contact Number:</label>
+            <input type="text" class="gcontact" name="gcontact" placeholder="Guardian's contact number" readonly value="{{d.gcontact}}">
+
+        </div><br>
+        <div>
+            <label for="gaccupation">Occupation:</label>
+            <input type="text" name="goccupation" class="goccupation" placeholder="Guardian's Work" readonly value="{{d.goccupation}}">
+        </div>
+
+    </div><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
+    <hr>
+    <br>
+    <div class="left3">
+        <div>
+            <label for="income">Income Bracket per year:</label>
+            <select class="income" name="income">
+                <option disabled selected>Income</option>
+                    <option value="less than 50k">Not more than 50k</option>
+                    <option value="less than 100k">Not more than 100k</option>
+                    <option value="less than 200k">Not more than 200k</option>
+                    <option value="less than 300k">Not more than 300k</option>
+                    <option value="400k above">400k Above</option>
+                </select>
+        </div><br>
+        <div>
+            <label for="file">1x1 Picture:</label>
+            <input type="file" class="file" name="picture">
+        </div>
+    </div>
+    <div class="right3">
+        <button class="sb"><input type="submit"  onclick="Validate()" class="submit" style="text-decoration: none;" ><i class="fa-solid fa-floppy-disk"></i></button>
+
+    </div>
+    {% endfor %}
+</body>
+
+</html>

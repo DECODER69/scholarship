@@ -310,7 +310,14 @@ body.dark .switch::before {
     width: calc(100% - 250px);
     background-color: var(--body-color);
     transition: var(--tran-05);
+    padding: 20px;
 }
+
+
+/* css for edit profile  */
+
+
+/* EDO PROFILE */
 
 .home .text {
     font-size: 30px;
@@ -331,3 +338,67 @@ body.dark .home .text {
 
 
 /* ADDITIONAL CSS */
+
+.home .student {
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 12px 60px;
+}
+
+.home .text1 {
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    color: #695CFE;
+}
+
+.details {
+    display: flex;
+    margin-left: 50px;
+    justify-content: space-between;
+}
+
+.top_list {
+    display: flex;
+    margin-left: 50px;
+    height: 200px;
+    justify-content: space-between;
+    ;
+}
+
+.status {
+    border-radius: 6px;
+    background-image: linear-gradient(to right, #1fdbdb, #5882e8);
+    width: 300px;
+    height: 130px;
+    text-align: center;
+}
+
+.status1 {
+    border-radius: 6px;
+    background-image: linear-gradient(to right, #ffd841, #ff8757);
+    width: 300px;
+    height: 130px;
+    text-align: center;
+}
+
+.status2 {
+    border-radius: 6px;
+    background-image: linear-gradient(to right, #41e296, #3bb5b5);
+    width: 300px;
+    height: 130px;
+    text-align: center;
+}
+
+.counts {
+    border-radius: 6px;
+    width: 300px;
+    height: 150px;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.icons {
+    width: 40px;
+}

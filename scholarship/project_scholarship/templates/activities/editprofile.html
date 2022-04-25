@@ -1,0 +1,434 @@
+<!DOCTYPE html> {% load static %}
+<!-- Coding by CodingLab | www.codinglabweb.com -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/f7e681d53d.js" crossorigin="anonymous"></script>
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/editprofile.css' %}">
+
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--<title>Dashboard Sidebar Menu</title>-->
+    <title>Edit Profile</title>
+</head>
+
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                {% for n in edit %}
+                <span class="image">
+                    <img  src="{{n.picture.url}}" alt="profile-pic" style="width: 50px; height:50px; border-radius:50%;">
+                </span>
+
+                <div class="text logo-text">
+
+                    <span class="name">{{n.firstname}} {{n.lastname}}</span>
+                    <span class="job" style="text-align:center;">student</span>
+
+                </div>
+                {% endfor %}
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="/dashboard">
+                            <i class='bx bx-home-alt icon'></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="/editprofile">
+                            <i class='bx bx-edit icon'></i>
+                            <span class="text nav-text">Edit Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Announcements</span>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="/logout_user">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+
+            </div>
+        </div>
+
+    </nav><br>
+
+    <section class="home">
+        <div class="conts">
+
+            <form action="{% url 'activities:edit' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %} {% for p in edit %}
+                <h1 class="header"><i class="fa-solid fa-user" style="color: #fbaa3f"></i> Personal Information</h1>
+                <hr>
+                <br>
+                <div class="one">
+                    <div class="detail8">
+                        <label for="department">Department:</label>
+                        <select class="department" name="department" id="department">
+                            <option >{{p.department}}</option>
+                        <option value="HighSchool">Highschool</option>
+                        <option value="College">College</option>
+                      </select>
+                    </div><br>
+                    <div class="detail6">
+                        <label for="school">School:</label>
+                        <select class="school" name="school" id="school">
+                            <option>{{p.school}}</option>
+                        <option value="MINSCAT">Mindoro State University (Main Campus)</option>
+                        <option value="saab">Mindoro State University (Calapan)</option>
+                      </select>
+                    </div><br>
+                    <div class="detail3">
+                        <label for="course">Course:</label>
+                        <select class="course" name="course" id="course">
+                            <option >{{p.course}}</option>
+                        <option value="volvo">Information Technology </option>
+                        <option value="saab">Course 2</option>
+                      </select>
+                    </div><br>
+                    <div class="detail4">
+                        <label for="year">Year:</label>
+                        <select class="year" name="year" id="year">
+                            <option >{{p.year}}</option>
+                            <option value="Grade 7">Grade 7</option>
+                            <option value="Grade 8">Grade 8</option>
+                            <option value="Grade 9">Grade 9</option>
+                            <option value="Grade 10">Grade 10</option>
+                            <option value="Grade 11">Grade 11</option>
+                            <option value="Grade 12">Grade 12</option>
+                        <option value="1st Year">1st Year College</option>
+                        <option value="2nd Year">2nd Year College</option>
+                        <option value="3rd Year">3rd Year College</option>
+                        <option value="4th Year">4th Year College</option>
+                        <option value="5th Year">5th Year College</option>
+                       
+                      </select>
+                    </div><br>
+                    {% comment %} <div class="idnum">
+                        <label for="username">ID Number: </label>
+                        <input type="text" name="username" class="username" required placeholder="ID Number" value="{{p.username}}">
+
+                    </div><br>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="password" name="password1" class="password1" placeholder="Password" id="password1" required><br><br>
+                        <input type="password" name="password2" class="password2" placeholder="Confirm Password" id="password2" required onclick="">
+                    </div> {% endcomment %}
+                </div><br><br>
+                <hr><br>
+                <br>
+                <div class="two">
+                    <div class="name">
+                        <label for="names">Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </label>
+                        <input class="names" type="text" placeholder="First name"  name="firstname" value="{{p.firstname}}">
+                        <input class="names" type="text" placeholder="Last name"  name="lastname" value="{{p.lastname}}">
+                        <input class="names" type="text" placeholder="Middle name"  name="middlename" value="{{p.middlename}}">
+                        <select class="extention" name="extention" id="extention" >
+                            <option >{{p.extention}}</option>
+                            <option value="Jr.">Jr</option>
+                            <option value="I">I</option>
+                            <option value="II">II</option>
+                            <option value="III">III</option>
+                            <option value="IV">IV</option>
+                            <option value="V">V</option>
+                          </select>
+                    </div>
+
+                </div><br>
+                <div class="division">
+                    <div class="left">
+                        <div class="detail1">
+                            <label for="birthday">Birthday:</label>
+                            <input class="birthday" type="date" placeholder="birthdate" name="birthday" value="{{p.birthday|date:"Y-m-d"}}">
+                        </div>
+                        <br>
+                        <div class="detail2">
+                            <label for="birthplace">Birth Place:</label>
+                            <input type="text" class="birthplace"  name="birthplace" value="{{p.birthplace}}">
+                        </div>
+                        <br>
+                        <div class="detail10">
+                            <label for="religion">Religion</label>
+                            <select class="religion" name="religion">
+                                
+                                <option >{{p.religion}}</option>
+                                <option value="Roman Catholic">Roman Catholic</option>
+                                <option>Jehova's Witness</option>
+                                <option>Buddhist</option>
+                                <option>Dating Daan</option>
+                                <option>Pagano</option>
+                                <option>Atheist</option>
+                                <option>Muslim</option>
+                                <option>Born Again</option>
+                                <option>Baptist</option>
+                                <option>Mormons</option>
+                                <option>Free Methodist</option>
+                                <option>Christian</option>
+                                <option>Protestant</option>
+                                <option>Aglipay</option>
+                                <option>LDS</option>
+                                <option>Seventh Day Adventist</option>
+                                <option>Iglesia Ni Cristo</option>
+                                <option>NA</option>
+                            </select>
+
+                        </div><br>
+                        <div class="details12">
+                            <label for="cpnumber">Cellphone Number:</label>
+                            <input type="text" class="cpnumber" name="cellphone" value="{{p.cellphone}}">
+
+                        </div>
+
+
+                    </div>
+                    <div class="right">
+                        <div class="detail7">
+                            <label for="gender">Gender:</label>
+                            <select class="gender" name="gender" id="gender">
+                                <option >{{p.gender}}</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                          </select>
+                        </div><br>
+                        <div class="detail11">
+                            <label for="age">Age:</label>
+                            <input type="text" name="age" class="age" value="{{p.age}}">
+                        </div><br>
+                        <div class="detail4">
+                            <label for="email">Email: </label>
+                            <input type="email" name="email" class="email" value="{{p.email}}">
+                        </div><br>
+                        <div class="detail3">
+                            <label for="civil">Civil Status:</label>
+                            <select class="civil" name="civil">
+                                <option >{{p.civil}}</option>
+                                <option value="Single">Single</option>
+                                <option value="Married">Married</option>
+                                <option value="Legally Seperated">Legally Separated</option>
+                                <option value="Widowed">Widowed</option>
+    
+                            </select>
+                        </div><br>
+                    </div>
+
+                </div>
+                <br><br>&nbsp;<br><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+                <hr>&nbsp;<br><br>
+                <div class="division2">
+                    <p class="perma" style="margin-left:10px;">Permanent Address</p>
+                    <div class="left2">
+
+                        <div class="unt">
+
+                            <label for="unit">Unit #:</label>
+                            <input type="text" name="unit" class="unit" placeholder="Unit #" value="{{p.unit}}">
+                        </div><br>
+
+
+                        <div class="strt">
+                            <label for="street">Street:</label>
+                            <input type="text" name="street" class="street" placeholder="Street" value="{{p.street}}">
+                        </div><br>
+                        <div class="brgy">
+                            <label for="barangay">Barangay:</label>
+                            <input type="text" name="barangay" class="barangay" placeholder="barangay" value="{{p.barangay}}">
+
+                        </div>
+
+                    </div>
+                    <div class="right2">
+                        <div class="muni">
+                            <label for="municipality">Municipality:</label>
+                            <input type="text" class="municipality"  name="municipality" placeholder="Municipality" value={{p.municipality}}>
+
+                        </div><br>
+                        <div class="prov">
+                            <label for="province">Province</label>
+                            <input type="text" class="province"  name="province" placeholder="Province" value="{{p.province}}">
+                        </div>
+
+                    </div>
+
+                </div><br><br>&nbsp;<br><br>&nbsp;<br><br>&nbsp;<br><br>
+                <hr>
+                <h1 class="header"><i class="fa-solid fa-users" style="color: #fbaa3f"></i> Family Background</h1>
+
+                <hr>
+                <br>
+                <div class="division3">
+                    <div class="left3">
+                        <div>
+                            <p class="perma">FATHER</p>
+                            <label for="father">Name:</label>
+                            <input type="text" class="father" name="father" placeholder="Father's Name" value="{{p.fname}}">
+                        </div><br>
+                        <div>
+                            <label for="fcontact">Contact Number:</label>
+                            <input type="text" class="fcontact" name="fcontact" placeholder="Father's contact number" value="{{p.fcontact}}">
+
+                        </div><br>
+                        <div>
+                            <label for="faccupation">Occupation:</label>
+                            <input type="text" name="foccupation" class="foccupation" placeholder="Father's Work" value="{{p.foccupation}}">
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="right3">
+                        <div>
+                            <p class="perma">MOTHER</p>
+                            <label for="mother">Name:</label>
+                            <input type="text" class="mother" name="mother" placeholder="Mother's Name" value="{{p.mname}}">
+                        </div><br>
+                        <div>
+                            <label for="mcontact">Contact Number:</label>
+                            <input type="text" class="mcontact" name="mcontact" placeholder="Mother's contact number" value="{{p.mcontact}}">
+
+                        </div><br>
+                        <div>
+                            <label for="maccupation">Occupation:</label>
+                            <input type="text" name="moccupation" class="moccupation" placeholder="Mother's Work" value="{{p.moccupation}}">
+                        </div>
+
+                    </div>
+
+                </div><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br><br>&nbsp;
+                <hr>
+                <div class="left3"><br>
+                    <div>
+                        <p class="perma">GUARDIAN</p>
+                        <label for="guardian">Name:</label>
+                        <input type="text" class="guardian" name="guardian" placeholder="Guardian's Name" value="{{p.gname}}">
+                    </div><br>
+                    <div>
+                        <label for="gcontact">Contact Number:</label>
+                        <input type="text" class="gcontact" name="gcontact" placeholder="Guardian's contact number" value="{{p.gcontact}}">
+
+                    </div><br>
+                    <div>
+                        <label for="gaccupation">Occupation:</label>
+                        <input type="text" name="goccupation" class="goccupation" placeholder="Guardian's Work" value="{{p.goccupation}}">
+                    </div>
+
+                </div><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
+
+                <br>
+                <div class="left3">
+                    <div>
+                        <label for="income">Income Bracket per year:</label>
+                        <select class="income" name="income">
+                            <option >{{p.income}}</option>
+                                <option value="less than 50k">Not more than 50k</option>
+                                <option value="less than 100k">Not more than 100k</option>
+                                <option value="less than 200k">Not more than 200k</option>
+                                <option value="less than 300k">Not more than 300k</option>
+                                <option value="400k above">400k Above</option>
+                            </select>
+                    </div><br>
+                    <div>
+                        <label for="file">1x1 Picture:</label>
+                        <input type="file" class="file" name="pictures" value="{{p.picture}}">
+                    </div>
+                </div>
+                <div class="right3">
+                    <button class="sb"><input type="submit"  onclick="Validate()" class="submit" style="text-decoration: none;" ><i class="fa-solid fa-floppy-disk"></i></button>
+                </div>
+                {% endfor %}
+            </form>
+        </div>
+
+
+
+        <script type="text/javascript">
+            function Validate() {
+                var password = document.getElementById("password1").value;
+                var confirmPassword = document.getElementById("password2").value;
+                if (password != confirmPassword) {
+                    alert("Passwords do not match.");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+
+
+
+
+    </section><br>
+
+
+
+    <script>
+        const body = document.querySelector('body'),
+            sidebar = body.querySelector('nav'),
+            toggle = body.querySelector(".toggle"),
+            searchBtn = body.querySelector(".search-box"),
+            modeSwitch = body.querySelector(".toggle-switch"),
+            modeText = body.querySelector(".mode-text");
+
+
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        })
+
+
+
+        modeSwitch.addEventListener("click", () => {
+            body.classList.toggle("dark");
+
+            if (body.classList.contains("dark")) {
+                modeText.innerText = "Light mode";
+            } else {
+                modeText.innerText = "Dark mode";
+
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

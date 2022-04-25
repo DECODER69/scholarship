@@ -9,6 +9,8 @@ class extenduser(models.Model):
     ("PENDING", "PENDING"),
     ("FOR REVIEW", "FOR REVIEW"),
     ("APPROVED", "APPROVED"),
+    ("REJECTED", "REJECTED"),
+    ("GRADUATED", "GRADUATED"),
     )
     status = models.CharField(max_length=20, choices=STATUS, default="PENDING")
     department = models.CharField(max_length=100)

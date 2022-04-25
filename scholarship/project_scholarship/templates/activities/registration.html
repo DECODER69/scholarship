@@ -13,10 +13,7 @@
 <body>
 
     <div class="conts">
-        <!-- <div class="col-4">
-            <img class="reg-logo" src="{% static 'image/logo.png' %}">
 
-        </div> -->
         <form action="{% url 'activities:register' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
 
@@ -42,7 +39,7 @@
                 </div><br>
                 <div class="detail3">
                     <label for="course">Course:</label>
-                    <select class="course" name="course" id="course" required>
+                    <select class="course" name="course" id="course">
                         <option disabled selected>Course</option>
                     <option value="volvo">Information Technology </option>
                     <option value="saab">Course 2</option>
@@ -51,9 +48,19 @@
                 <div class="detail4">
                     <label for="year">Year:</label>
                     <select class="year" name="year" id="year" required>
-                        <option disabled selected>Year</option>
-                    <option value="1st Year">1st Year</option>
-                    <option value="2nd Year">2nd Year</option>
+                        <option disabled selected>Year / Grade Level</option>
+                        <option value="Grade 7">Grade 7</option>
+                        <option value="Grade 8">Grade 8</option>
+                        <option value="Grade 9">Grade 9</option>
+                        <option value="Grade 10">Grade 10</option>
+                        <option value="Grade 11">Grade 11</option>
+                        <option value="Grade 12">Grade 12</option>
+                    <option value="1st Year">1st Year College</option>
+                    <option value="2nd Year">2nd Year College</option>
+                    <option value="3rd Year">3rd Year College</option>
+                    <option value="4th Year">4th Year College</option>
+                    <option value="5th Year">5th Year College</option>
+                   
                   </select>
                 </div><br>
                 <div class="idnum">
@@ -78,6 +85,7 @@
                     <input class="names" type="text" placeholder="Last name" required name="lastname">
                     <input class="names" type="text" placeholder="Middle name" required name="middlename">
                     <select class="extention" name="extention" id="extention" required>
+                        <option disabled selected>Suffix</option>
                         <option value="1st Year">Jr</option>
                         <option value="2nd Year">I</option>
                         <option value="2nd Year">II</option>
@@ -104,6 +112,7 @@
                         <label for="religion">Religion</label>
                         <select class="religion" required name="religion">
                             <option value="Roman Catholic">Roman Catholic</option>
+                            <option disabled selected>Religion</option>
                             <option>Jehova's Witness</option>
                             <option>Buddhist</option>
                             <option>Dating Daan</option>
@@ -136,6 +145,7 @@
                     <div class="detail7">
                         <label for="gender">Gender:</label>
                         <select class="gender" name="gender" id="gender" required>
+                            <option disabled selected>Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                       </select>
@@ -151,6 +161,7 @@
                     <div class="detail3">
                         <label for="civil">Civil Status:</label>
                         <select class="civil" name="civil">
+                            <option disabled selected>Relationship Status</option>
                             <option value="Single">Single</option>
                             <option value="Married">Married</option>
                             <option value="Legally Seperated">Legally Separated</option>
@@ -267,7 +278,7 @@
                 <div>
                     <label for="income">Income Bracket per year:</label>
                     <select class="income" name="income">
-                        <option disabled selected>Select</option>
+                        <option disabled selected>Income</option>
                             <option value="less than 50k">Not more than 50k</option>
                             <option value="less than 100k">Not more than 100k</option>
                             <option value="less than 200k">Not more than 200k</option>

@@ -14,6 +14,7 @@
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
     <!--<title>Dashboard Sidebar Menu</title>-->
+    <title>navigation bar</title>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
             <div class="image-text">
                 {% for n in status %}
                 <span class="image">
-                    <img  src="{{n.picture.url}}" alt="profile-pic">
+                    <img  src="{{n.picture.url}}" alt="profile-pic" style="width: 50px; height:50px; border-radius:50%;">
                 </span>
 
                 <div class="text logo-text">
@@ -41,14 +42,14 @@
             <div class="menu">
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="/dashboard">
                             <i class='bx bx-home-alt icon'></i>
                             <span class="text nav-text">Dashboard</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="/editprofile">
                             <i class='bx bx-edit icon'></i>
                             <span class="text nav-text">Edit Profile</span>
                         </a>
@@ -87,7 +88,7 @@
 
             <div class="bottom-content">
                 <li class="">
-                    <a href="#">
+                    <a href="/logout_user">
                         <i class='bx bx-log-out icon'></i>
                         <span class="text nav-text">Logout</span>
                     </a>
@@ -109,65 +110,27 @@
         </div>
 
     </nav><br>
-
-
-
-
-
-
     <section class="home">
         <div class="text" style="color: #387b3a;">Dashboard</div>
         <hr><br>
-        <div class="top_list">
-            <div class="status"><br>
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAJ5JREFUSEtjZKAxYKSx+QzEWPAf6gh0tbjEUdxMdwscGBgY5jMwMCiQGXQPGBgYEhkYGA7A9KP7AKRAnkzDYdpAZijisgAWrhTagYhbsiIOj+0YET/gFhAbZDCHkuyDoW8BqamJ5CAatQCjNCWqhBxSGW3oRfIHBgYGflKdjab+IXJ9gl7YgSqcBRTUCSDDE/BVOBQ6HlM7MXUyRZYCAHcBLBk7Iv17AAAAAElFTkSuQmCC"
-                />
-
-                <p>PENDING APPLICATIONS</p>
-                <h1>{{s.school}}</h1>
-            </div><br>&nbsp;
-
-            <div class="status1"><br>
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQ5JREFUSEvtlNEVwUAQRW86UIIO6AAVoAIlKAEdKIEK6AAd0IESdMB5zm7Oitns5hzxlfnJR96+u/NmkoKWq2jZnw6QTDgWUQ9YATPncAQ2wCPpWBHEAFdgUNGegckvAGPgFDESQKDssjpYu3gsE8Wk97FStIp15wUWQIJDxGEOaB5WyVydD4FS12QGN3c4ZS6dYn4vRAzQB7bA1LntXTT3wF1RSaPyN/8wrwOkhujnpG1TKZYv8xhAM1i6NkOQtkdD1lN56+lX2TS3AJr+InF9v0keInmZefVsOIO67ame89+DIKroFx4C1PIoFb57fzEiNI+GgGemuZdl/er/CmjYQJ48q808K1vVAZLpvQB1zC8ZDL5OrQAAAABJRU5ErkJggg=="
-                />
-                <p>ACTIVE SCHOLARS</p>
-                <h1>{{s.status}}</h1>
-            </div><br>&nbsp;
-
-        </div>
-
-
-
-        <!-- ####################################### -->
-
-
-
         <div class="details">
-            <div class="status"><br> {% for s in status %}
+            {% for s in status %}
+            <div class="status2"><br>
+                <h1>{{s.firstname}} {{s.lastname}}</h1>
+                <p>NAME</p>
+
+            </div><br>&nbsp;
+            <div class="status"><br>
                 <h1>{{s.school}}</h1>
                 <p>SCHOOL</p>
             </div><br>&nbsp;
             <div class="status1"><br>
                 <h1>{{s.status}}</h1>
                 <p>APPLICATION STATUS</p>
-            </div><br>&nbsp;
-
-            <div class="status2"><br>
-                <h1>{{s.firstname}} {{s.lastname}}</h1>
-                <p>NAME</p>
-
-            </div><br>&nbsp;
-
-            <div class="status2"><br>
-                <h1>{{s.firstname}} {{s.lastname}}</h1>
-                <p>NAME</p>
-                {% endfor %}
-            </div><br>&nbsp;
+            </div><br>&nbsp; {% endfor %}
         </div>
 
     </section><br>
-
-
 
 
     <script>
@@ -196,6 +159,7 @@
             }
         });
     </script>
+
 
 </body>
 

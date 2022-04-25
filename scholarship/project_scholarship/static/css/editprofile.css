@@ -1,0 +1,361 @@
+.conts {
+    background-color: rgb(255, 255, 255);
+    height: 260vh;
+    border-radius: 10px;
+}
+
+.one {
+    margin-left: 10px;
+}
+
+.one label {
+    font-size: 16px;
+}
+
+.department {
+    width: 60%;
+    float: right;
+    margin-right: 20%;
+    height: 22px;
+}
+
+.username {
+    width: 60%;
+    float: right;
+    margin-right: 20%;
+    height: 22px;
+}
+
+.password1 {
+    width: 60%;
+    float: right;
+    margin-right: 20%;
+    height: 22px;
+}
+
+.password2 {
+    width: 60%;
+    float: right;
+    margin-right: 20%;
+    height: 22px;
+}
+
+.school {
+    width: 60%;
+    float: right;
+    margin-right: 20%;
+    height: 22px;
+}
+
+.course {
+    width: 60%;
+    float: right;
+    margin-right: 20%;
+    height: 22px;
+}
+
+.year {
+    width: 60%;
+    float: right;
+    margin-right: 20%;
+    height: 22px;
+}
+
+
+/* EOF ONE */
+
+
+/* TWOOOOOOOOOOOOOO */
+
+.two label {
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.names {
+    font-size: 15px;
+    height: 25px;
+    margin-left: 30px;
+    width: 220px;
+}
+
+.extention {
+    font-size: 15px;
+    height: 25px;
+    width: 100px;
+    float: right;
+    margin-right: 30px;
+}
+
+
+/* EOF 22222222222 */
+
+
+/* DIVISIOOOOOOON */
+
+.left {
+    width: 50%;
+    float: left;
+    margin-left: 10px;
+}
+
+.right {
+    width: 45%;
+    float: right;
+}
+
+.division {
+    font-size: 16px;
+    width: 100%;
+}
+
+.birthday {
+    font-size: 15px;
+    height: 25px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.birthplace {
+    font-size: 15px;
+    height: 25px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.gender {
+    font-size: 15px;
+    height: 30px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.email {
+    font-size: 15px;
+    height: 25px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.religion {
+    font-size: 15px;
+    height: 30px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.age {
+    font-size: 15px;
+    height: 25px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.cpnumber {
+    font-size: 15px;
+    height: 25px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.civil {
+    font-size: 15px;
+    height: 30px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+
+/* EOF DIVISION */
+
+
+/* DIVISIOOOOOOOOOOOON 2 */
+
+.left2 {
+    width: 50%;
+    float: left;
+    margin-left: 10px;
+}
+
+.right2 {
+    width: 45%;
+    float: right;
+}
+
+.municipality {
+    font-size: 15px;
+    height: 25px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.province {
+    font-size: 15px;
+    height: 25px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.unit {
+    font-size: 15px;
+    height: 25px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.street {
+    font-size: 15px;
+    height: 25px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.barangay {
+    font-size: 15px;
+    height: 25px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.perma {
+    font-weight: bolder;
+}
+
+
+/* EOF DIVISION 2 */
+
+
+/* DIVISION 3 */
+
+.left3 {
+    width: 50%;
+    float: left;
+    margin-left: 10px;
+}
+
+.right3 {
+    width: 45%;
+    float: right;
+}
+
+.father {
+    font-size: 15px;
+    height: 25px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.fcontact {
+    font-size: 15px;
+    height: 25px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.foccupation {
+    font-size: 15px;
+    height: 25px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.mother {
+    font-size: 15px;
+    height: 25px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.mcontact {
+    font-size: 15px;
+    height: 25px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.moccupation {
+    font-size: 15px;
+    height: 25px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.guardian {
+    font-size: 15px;
+    height: 25px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.gcontact {
+    font-size: 15px;
+    height: 25px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.goccupation {
+    font-size: 15px;
+    height: 25px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.income {
+    font-size: 15px;
+    height: 30px;
+    width: 300px;
+    float: right;
+    margin-right: 30px;
+}
+
+.submit {
+    float: right;
+    height: 60px;
+    width: 100px;
+    color: #fbaa3f;
+    font-size: 20px;
+    font-weight: bolder;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.sb {
+    float: right;
+    font-size: 50px;
+    color: #fbaa3f;
+    background-color: #c7232b;
+}
+
+.file {
+    font-size: 15px;
+    height: 30px;
+    width: 320px;
+    float: right;
+    margin-right: 30px;
+}
+
+
+/* EOF DIVISION3 */

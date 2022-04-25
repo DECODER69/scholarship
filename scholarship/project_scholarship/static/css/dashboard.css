@@ -349,7 +349,6 @@ body.dark .home .text {
 
 .details {
     display: flex;
-    height: 100vh;
     margin-left: 50px;
     justify-content: space-between;
 }
@@ -359,6 +358,7 @@ body.dark .home .text {
     margin-left: 50px;
     height: 200px;
     justify-content: space-between;
+    ;
 }
 
 .status {
@@ -371,7 +371,7 @@ body.dark .home .text {
 
 .status1 {
     border-radius: 6px;
-    background-image: linear-gradient(to right, #f5519e, #fe7378);
+    background-image: linear-gradient(to right, #ffd841, #ff8757);
     width: 300px;
     height: 130px;
     text-align: center;
@@ -383,4 +383,16 @@ body.dark .home .text {
     width: 300px;
     height: 130px;
     text-align: center;
+}
+
+.counts {
+    border-radius: 6px;
+    width: 300px;
+    height: 150px;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.icons {
+    width: 40px;
 }
