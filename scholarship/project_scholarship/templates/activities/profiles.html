@@ -13,59 +13,80 @@
     {% include 'activities/navadmin.html' %}
     <div class="text">Profiles</div>
     <hr> {% for d in namess %}
+
+    <img class="image" src="{{d.picture.url}}" alt="profile-pic"><br>
+
+    <hr>
+    <p class="perma">Personal Information</p>
     <div class="one">
-        <div class="detail8">
-            <label for="department">Department:</label>
-            <input type="text" value="{{d.department}}" readonly>
-        </div><br>
-        <div class="detail6">
-            <label for="school">School:</label>
-            <input type="text" value="{{d.school}}" readonly>
-        </div><br>
-        <div class="detail3">
-            <label for="course">Course:</label>
-            <input type="text" value="{{d.course}}" readonly>
-        </div><br>
-        <div class="detail4">
-            <label for="year">Year:</label>
-            <input type="text" value="{{d.year}}" readonly>
-        </div><br>
+        <div>
+            <input class="names" type="text" value="{{d.firstname}}" readonly>
+            <h1 class="labels">First name</h1>
+        </div>
+        <div>
+            <input class="names" type="text" value="{{d.lastname}}" readonly>
+            <h1 class="labels">Last name</h1>
+        </div>
+        <div>
+            <input class="names" type="text" value="{{d.middlename}}" readonly>
+            <h1 class="labels">Middle name</h1>
+        </div>
+        <div>
+            <input class="names" type="text" value="{{d.extention}}" readonly>
+            <h1 class="labels">Suffix</h1>
+        </div>
+    </div>
 
 
-    </div><br><br>
-    <hr><br>
+    <br><br>
+
     <br>
     <div class="two">
-        <div class="name">
-            <label for="names">Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </label>
-            <input class="names" type="text" value="{{d.firstname}}" readonly>
-            <input class="names" type="text" value="{{d.lastname}}" readonly>
-            <input class="names" type="text" value="{{d.middlename}}" readonly>
-            <input class="names" type="text" value="{{d.extention}}" readonly>
+        <div class="detail8">
+            <input type="text" value="{{d.department}}" readonly>
+            <h1 class="labels">Department</h1>
+        </div>
+        <div class="detail6">
+
+            <input type="text" value="{{d.school}}" readonly>
+            <h1 class="labels">School</h1>
+        </div>
+        <div class="detail3">
+
+            <input type="text" value="{{d.course}}" readonly>
+            <h1 class="labels">Course</h1>
+        </div>
+        <div class="detail4">
+
+            <input type="text" value="{{d.year}}" readonly>
+            <h1 class="labels">Year</h1>
         </div>
 
     </div><br>
+    <hr>
     <div class="division">
         <div class="left">
             <div class="detail1">
-                <label for="birthday">Birthday:</label>
-                <input class="birthday" type="text" placeholder="birthdate" name="birthday" value="{{d.birthday}}" readonly>
+
+                <input class="content" type="text" placeholder="birthdate" name="birthday" value="{{d.birthday}}" readonly>
+                <h1 class="labels">Birthday</h1>
             </div>
             <br>
             <div class="detail2">
-                <label for="birthplace">Birth Place:</label>
-                <input type="text" class="birthplace" required name="birthplace" value="{{d.birthplace}}" readonly>
+
+                <input type="text" class="content" required name="birthplace" value="{{d.birthplace}}" readonly>
+                <h1 class="labels">Birthplace</h1>
             </div>
             <br>
             <div class="detail10">
-                <label for="religion">Religion</label>
-                <input type="text" value="{{d.religion}}" readonly>
+
+                <input type="text" value="{{d.religion}}" readonly class="content">
+                <h1 class="labels">Religion</h1>
             </div><br>
             <div class="details12">
-                <label for="cpnumber">Cellphone Number:</label>
-                <input type="text" class="cpnumber" name="cellphone" value="{{d.cellphone}}" readonly>
+
+                <input type="text" class="content" name="cellphone" value="{{d.cellphone}}" readonly>
+                <h1 class="labels">Cellphone number</h1>
 
             </div>
 
@@ -73,81 +94,89 @@
         </div>
         <div class="right">
             <div class="detail7">
-                <label for="gender">Gender:</label>
-                <input type="text" value="{{d.gender}}" readonly>
+
+                <input type="text" value="{{d.gender}}" readonly class="content">
+                <h1 class="labels">Gender</h1>
             </div><br>
             <div class="detail11">
-                <label for="age">Age:</label>
-                <input type="text" name="age" class="age" value="{{d.age}}" readonly>
+
+                <input type="text" name="age" class="content" value="{{d.age}}" readonly>
+                <h1 class="labels">Age</h1>
             </div><br>
             <div class="detail4">
-                <label for="email">Email:</label>
-                <input type="email" name="email" class="email" readonly value="{{d.email}}">
+
+                <input type="email" name="email" class="content" readonly value="{{d.email}}">
+                <h1 class="labels">Email</h1>
             </div><br>
             <div class="detail3">
-                <label for="civil">Civil Status:</label>
-                <input type="text" readonly value="{{d.civil}}">
+
+                <input type="text" readonly value="{{d.civil}}" class="content">
+                <h1 class="labels">Civil Status</h1>
             </div><br>
         </div>
 
     </div>
-    <br><br>&nbsp;<br><br>
-    <hr>&nbsp;<br><br>
+    <br><br>&nbsp;<br><br> &nbsp;
+    <br><br>&nbsp;<br><br>&nbsp;<br><br>&nbsp;<br><br>
+    <hr>
+    <p class="perma">Permanent Address</p>
     <div class="division2">
-        <p class="perma">Permanent Address</p>
         <div class="left2">
             <div class="unt">
-
-                <label for="unit">Unit #:</label>
                 <input type="text" name="unit" class="unit" placeholder="Unit #" readonly value="{{d.unit}}">
+                <h1 class="labels">Unit #</h1>
             </div><br>
 
 
             <div class="strt">
-                <label for="street">Street:</label>
                 <input type="text" name="street" class="street" placeholder="Street" readonly value="{{d.street}}">
+                <h1 class="labels">Street</h1>
             </div><br>
             <div class="brgy">
-                <label for="barangay">Barangay:</label>
+
                 <input type="text" name="barangay" class="barangay" placeholder="barangay" readonly value="{{d.barangay}}">
+                <h1 class="labels">Barangay</h1>
 
             </div>
 
-        </div>
-        <div class="right2">
-            <div class="muni">
-                <label for="municipality">Municipality:</label>
-                <input type="text" class="municipality" required name="municipality" placeholder="Municipality" readonly value="{{d.municipality}}">
 
+
+            <div class="muni">
+
+                <input type="text" class="municipality" required name="municipality" placeholder="Municipality" readonly value="{{d.municipality}}">
+                <h1 class="labels">Municipality</h1>
             </div><br>
             <div class="prov">
-                <label for="province">Province</label>
+
                 <input type="text" class="province" required name="province" placeholder="Province" readonly value="{{d.province}}">
+                <h1 class="labels">Province</h1>
             </div>
 
+
+
         </div>
+        <hr>
+        <p class="perma">Family Background</p>
 
-    </div><br><br>&nbsp;<br><br>&nbsp;<br><br>&nbsp;<br><br>
-    <hr>
-    <h1 class="header"><i class="fa-solid fa-users" style="color: #fbaa3f"></i> Family Background</h1>
+    </div>
 
-    <hr>
-    <br>
     <div class="division3">
         <div class="left3">
             <div>
-                <p class="perma">FATHER</p>
-                <label for="father">Name:</label>
-                <input type="text" class="father" name="father" placeholder="Father's Name" readonly value="{{d.fname}}">
+                <p class="parents">FATHER</p>
+                <input type="text" class="content" name="father" placeholder="Father's Name" readonly value="{{d.fname}}">
+                <h1 class="labels">Father's name</h1>
             </div><br>
             <div>
-                <label for="fcontact">Contact Number:</label>
-                <input type="text" class="fcontact" name="fcontact" placeholder="Father's contact number" readonly value="{{d.fcontact}}">
+
+                <input type="text" class="content" name="fcontact" placeholder="Father's contact number" readonly value="{{d.fcontact}}">
+                <h1 class="labels">Contact</h1>
 
             </div><br>
             <div>
-                <label for="faccupation">Occupation:</label>
-                <input type="text" name="foccupation" class="foccupation" placeholder="Father's Work" readonly value="{{d.foccupation}}">
+
+                <input type="text" name="foccupation" class="content" placeholder="Father's Work" readonly value="{{d.foccupation}}">
+                <h1 class="labels">Occupation</h1>
             </div>
 
 
@@ -156,63 +185,58 @@
         </div>
         <div class="right3">
             <div>
-                <p class="perma">MOTHER</p>
-                <label for="mother">Name:</label>
-                <input type="text" class="mother" name="mother" placeholder="Mother's Name" readonly value="{{d.mname}}">
+                <p class="parents">MOTHER</p>
+
+                <input type="text" class="content" name="mother" placeholder="Mother's Name" readonly value="{{d.mname}}">
+                <h1 class="labels">Mother's name</h1>
             </div><br>
             <div>
-                <label for="mcontact">Contact Number:</label>
-                <input type="text" class="mcontact" name="mcontact" placeholder="Mother's contact number" readonly value="{{d.mcontact}}">
+
+                <input type="text" class="content" name="mcontact" placeholder="Mother's contact number" readonly value="{{d.mcontact}}">
+                <h1 class="labels">Contact</h1>
 
             </div><br>
             <div>
-                <label for="maccupation">Occupation:</label>
-                <input type="text" name="moccupation" class="moccupation" placeholder="Mother's Work" readonly value="{{d.moccupation}}">
+
+                <input type="text" name="moccupation" class="content" placeholder="Mother's Work" readonly value="{{d.moccupation}}">
+                <h1 class="labels">Occupation</h1>
             </div>
 
         </div>
 
-    </div><br>&nbsp;
+    </div>
     <hr>
-    <div class="left3">
-        <div>
-            <p class="perma">GUARDIAN</p>
-            <label for="guardian">Name:</label>
-            <input type="text" class="guardian" name="guardian" placeholder="Guardian's Name" readonly value="d.gname"> </div><br>
-        <div>
-            <label for="gcontact">Contact Number:</label>
-            <input type="text" class="gcontact" name="gcontact" placeholder="Guardian's contact number" readonly value="{{d.gcontact}}">
+    <div class="division4">
+        <div class="leftss">
+            <div>
+                <p class="parents">GUARDIAN</p>
 
-        </div><br>
-        <div>
-            <label for="gaccupation">Occupation:</label>
-            <input type="text" name="goccupation" class="goccupation" placeholder="Guardian's Work" readonly value="{{d.goccupation}}">
-        </div>
+                <input type="text" class="guardian" name="guardian" placeholder="Guardian's Name" readonly value="{{d.gname}}"> </div><br>
+            <h1 class="labels">Guardian's name</h1>
+            <div>
 
-    </div><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
-    <hr>
-    <br>
-    <div class="left3">
-        <div>
-            <label for="income">Income Bracket per year:</label>
-            <select class="income" name="income">
-                <option disabled selected>Income</option>
-                    <option value="less than 50k">Not more than 50k</option>
-                    <option value="less than 100k">Not more than 100k</option>
-                    <option value="less than 200k">Not more than 200k</option>
-                    <option value="less than 300k">Not more than 300k</option>
-                    <option value="400k above">400k Above</option>
-                </select>
-        </div><br>
-        <div>
-            <label for="file">1x1 Picture:</label>
-            <input type="file" class="file" name="picture">
+                <input type="text" class="guardian" name="gcontact" placeholder="Guardian's contact number" readonly value="{{d.gcontact}}">
+                <h1 class="labels">Contact</h1>
+
+            </div><br>
+            <div>
+
+                <input type="text" name="goccupation" class="guardian" placeholder="Guardian's Work" readonly value="{{d.goccupation}}">
+                <h1 class="labels">Occupation</h1>
+            </div>
         </div>
     </div>
-    <div class="right3">
-        <button class="sb"><input type="submit"  onclick="Validate()" class="submit" style="text-decoration: none;" ><i class="fa-solid fa-floppy-disk"></i></button>
+    <hr>
+    <p class="perma">Family Income</p>
+    <div class="left6">
+        <div>
+
+            <input type="text" readonly value="{{d.income}}" class="inc">
+            <h1 class="labels">Income</h1>
+        </div><br>
 
     </div>
+
     {% endfor %}
 </body>
 

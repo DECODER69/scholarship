@@ -28,4 +28,6 @@ urlpatterns = [
     path('update/', views.update, name='update'),
     path('revprofile/<str:id>', views.revprofile, name='revprofile'),
     path('review', views.review, name='review'),
+    path('active/', views.active, name='active'),
+    path('graduate', views.graduate, name='graduate'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

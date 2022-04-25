@@ -24,7 +24,7 @@ class extenduser(models.Model):
     birthday = models.DateField()
     birthplace = models.CharField(max_length=100)
     religion = models.CharField(max_length=100)
-    cellphone = models.IntegerField()
+    cellphone = models.IntegerField( max_length=11)
     gender = models.CharField(max_length=10)
     age =  models.DecimalField(max_digits=11, decimal_places=0, default='')
     email = models.EmailField(max_length=254, null=True, unique=True)

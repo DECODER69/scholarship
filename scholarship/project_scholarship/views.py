@@ -26,6 +26,8 @@ from django.contrib.auth import authenticate
 from django.http import FileResponse
 from django.contrib.auth.forms import UserCreationForm
 
+from django.core.mail import send_mail
+
 
 
 # Create your views here.
@@ -183,7 +185,7 @@ def admindashboard(request):
     
     count5 = extenduser.objects.filter(status='PENDING').count()
     count6 = extenduser.objects.filter(status='APPROVED').count()
-    count7 = extenduser.objects.filter(status='GRADUATED').count()
+    count7 = extenduser.objects.filter(status='GRADUATE').count()
     context = {
      
         'count5':  count5,
@@ -201,9 +203,25 @@ def approval(request):
     }
     return render(request, 'activities/approval.html', context)
 
+def active(request):
+    approved = extenduser.objects.filter(status='APPROVED')
+    context={
+        'approved': approved,
+    }
+    return render(request, 'activities/approved.html', context)
+
+def graduate(request):
+    graduated = extenduser.objects.filter(status='GRADUATE')
+    context={
+        'graduated': graduated,
+    }
+    return render(request, 'activities/graduated.html', context)
+
+
 def update(request):
     stat1 = request.POST.get('stats')
     stat2 = request.POST.get('getID')
+
     extenduser.objects.filter(id=stat2).update(status=stat1)
     print(stat1, stat2)
     return redirect('/approval')
