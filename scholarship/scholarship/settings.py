@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+from tkinter.tix import Tree
 SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 templates = [{'DIRS': [os.path.join(SETTINGS_PATH, 'templates')]}]
 INSTALLED_APPS = ['project_scholarship',]

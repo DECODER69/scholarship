@@ -11,7 +11,7 @@
 </head>
 
 <body>
-
+    {% comment %} {% include 'activities/messages.html'%} {% endcomment %}
     <div class="conts">
 
         <form action="{% url 'activities:register' %}" method="POST" enctype="multipart/form-data">
@@ -33,16 +33,16 @@
                     <label for="school">School:</label>
                     <select class="school" name="school" id="school" required>
                         <option disabled selected>School</option>
-                    <option value="MINSCAT">Mindoro State University (Main Campus)</option>
-                    <option value="saab">Mindoro State University (Calapan)</option>
+                    <option value="MINSCAT(Main)">Mindoro State University (Main Campus)</option>
+                    <option value="MINSCAT (Calapan)">Mindoro State University (Calapan)</option>
                   </select>
                 </div><br>
                 <div class="detail3">
                     <label for="course">Course:</label>
                     <select class="course" name="course" id="course">
                         <option disabled selected>Course</option>
-                    <option value="volvo">Information Technology </option>
-                    <option value="saab">Course 2</option>
+                    <option value="Information Technology">Information Technology </option>
+                    <option value="Computer Science">Computer Science</option>
                   </select>
                 </div><br>
                 <div class="detail4">
@@ -64,9 +64,12 @@
                   </select>
                 </div><br>
                 <div class="idnum">
-                    <label for="username">ID Number: </label>
-                    <input type="text" name="username" class="username" required placeholder="ID Number">
 
+                    <label for="username">ID Number: </label>
+                    <input type="text" name="username" class="username" required placeholder="ID Number"><br><br>
+                    <div class="txt" style="text-align: center; color:#f30000" id="msg">
+                        {% for message in messages %} {{ message }} {% endfor %}
+                    </div>
                 </div><br>
                 <div>
                     <label for="password">Password</label>
@@ -84,7 +87,7 @@
                     <input class="names" type="text" placeholder="First name" required name="firstname">
                     <input class="names" type="text" placeholder="Last name" required name="lastname">
                     <input class="names" type="text" placeholder="Middle name" required name="middlename">
-                    <select class="extention" name="extention" id="extention" required>
+                    <select class="extention" name="extention" id="extention">
                         <option disabled selected>Suffix</option>
                         <option value="1st Year">Jr</option>
                         <option value="2nd Year">I</option>
@@ -111,8 +114,9 @@
                     <div class="detail10">
                         <label for="religion">Religion</label>
                         <select class="religion" required name="religion">
-                            <option value="Roman Catholic">Roman Catholic</option>
                             <option disabled selected>Religion</option>
+                            <option value="Roman Catholic">Roman Catholic</option>
+                            
                             <option>Jehova's Witness</option>
                             <option>Buddhist</option>
                             <option>Dating Daan</option>
@@ -135,8 +139,8 @@
                     </div><br>
                     <div class="details12">
                         <label for="cpnumber">Cellphone Number:</label>
-                        <input type="text" class="cpnumber" name="cellphone">
-
+                        <input type="number" maxlength="11" class="cpnumber" name="cellphone" id="cpnumber">
+                        <span class="hint" id="textarea_message"></span>
                     </div>
 
 
@@ -152,7 +156,7 @@
                     </div><br>
                     <div class="detail11">
                         <label for="age">Age:</label>
-                        <input type="text" name="age" class="age" required>
+                        <input type="number" name="age" class="age" required>
                     </div><br>
                     <div class="detail4">
                         <label for="email">Email:</label>
@@ -223,7 +227,7 @@
                     </div><br>
                     <div>
                         <label for="fcontact">Contact Number:</label>
-                        <input type="text" class="fcontact" name="fcontact" placeholder="Father's contact number">
+                        <input type="number" class="fcontact" name="fcontact" placeholder="Father's contact number">
 
                     </div><br>
                     <div>
@@ -243,7 +247,7 @@
                     </div><br>
                     <div>
                         <label for="mcontact">Contact Number:</label>
-                        <input type="text" class="mcontact" name="mcontact" placeholder="Mother's contact number">
+                        <input type="number" class="mcontact" name="mcontact" placeholder="Mother's contact number">
 
                     </div><br>
                     <div>
@@ -263,7 +267,7 @@
                 </div><br>
                 <div>
                     <label for="gcontact">Contact Number:</label>
-                    <input type="text" class="gcontact" name="gcontact" placeholder="Guardian's contact number">
+                    <input type="number" class="gcontact" name="gcontact" placeholder="Guardian's contact number">
 
                 </div><br>
                 <div>
@@ -292,7 +296,7 @@
                 </div>
             </div>
             <div class="right3">
-                <button class="sb"><input type="submit"  onclick="Validate()" class="submit" style="text-decoration: none;" ><i class="fa-solid fa-floppy-disk"></i></button>
+                <button class="sb"><input type="submit"  onclick="Validate(), click()" class="submit" style="text-decoration: none;" ><i class="fa-solid fa-floppy-disk"></i></button>
 
             </div>
         </form>
@@ -310,6 +314,24 @@
             }
             return true;
         }
+    </script>
+    <script>
+        document.getElementById('msg')
+        setTimeout(function() {
+            document.getElementById('msg').innerHTML = '';
+        }, 8000);
+    </script>
+    <script>
+        $('input#cpnumber').on('keyup', function() {
+            var maxlen = $(this).attr('maxlength');
+
+            var length = $(this).val().length;
+            if (length > (maxlen - 10)) {
+                $('#textarea_message').text('max length ' + maxlen + ' characters only!')
+            } else {
+                $('#textarea_message').text('sheeesh');
+            }
+        });
     </script>
 
 </body>

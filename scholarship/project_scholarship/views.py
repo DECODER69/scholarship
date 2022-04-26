@@ -1,6 +1,6 @@
 from dataclasses import field
 from os import name
-from pyexpat.errors import messages
+
 from django.contrib import messages 
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, HttpResponseRedirect
@@ -71,10 +71,11 @@ def navbar(request):
 
 def register(request):
     if request.method == 'POST':
-        try:
-            user = User.objects.get(username=request.POST.get('username'),email=request.POST.get('email'))
-            return render(request, 'activities/registration.html', {'error': 'User already exists'})
-        except:
+        user = request.POST['username']
+        if User.objects.filter(username=user).exists():
+            messages.info(request, 'Username already exists')
+            return redirect('/registration')
+        else:
             department = request.POST.get('department')
             school = request.POST.get('school')
             course = request.POST.get('course')
@@ -115,6 +116,7 @@ def register(request):
             data1 = extenduser(picture=picture,department=department, school=school, course=course, year=year, firstname=firstname, lastname=lastname, middlename=middlename, extention=extention, birthday=birthday, birthplace=birthplace, religion=religion, cellphone=cellphone,gender=gender, age=age,email=email, civil=civil, unit=unit, street=street, barangay=barangay, municipality=municipality, province=province,fname=father, fcontact=fcontact, foccupation=foccupation, mname=mother, mcontact=mcontact, moccupation=moccupation, gname=guardian, gcontact=gcontact, goccupation=goccupation, income=income, user=user)
             data1.save()
             auth.login(request, user)
+            
             return redirect('/registration/')
     else:
         return redirect('/registration/')
@@ -128,9 +130,10 @@ def login(request):
             auth.login(request, user)
             return redirect('/dashboard')
         else:
+            messages.success(request, 'Incorrect Credentials')
             return render(request, 'activities/login.html')
     else:
-        return render(request, 'activities/dashboard.html')
+        return render(request, 'activities/login.html')
     
     
 def logout_user(request):
@@ -236,3 +239,7 @@ def revprofile(request, id):
 
 def review(request):
     return redirect('/revprofile')
+
+
+def announcements(request):
+    return render(request, 'activities/announcements.html')
