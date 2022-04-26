@@ -8,11 +8,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Announcements</title>
     <link rel="stylesheet" href="{% static 'css/announcements.css' %}">
+
 </head>
 
 <body>
     {% include 'activities/navadmin.html' %}
     <div class="text">Announcements</div>
+    <hr>
+    <h1 class="uppertit">Type your Announcements here</h1><br>
+    <form class="inner" action="{% url 'activities:announcements' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="texts">
+            <input type="text" placeholder="Title" name="title" class="title" required>
+            <textarea rows="4" cols="100" name="announce_data" placeholder="Content" class="content" required></textarea>
+            <div class="btns">
+                <button type="submit" class="post">Post</button>
+
+            </div>
+        </div>
+
+    </form><br>
+    <div class="viewhere">
+        <h1 class="uppertit">View Announcements here</h1><br>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" class="adjust">Title</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for n in announcementss %}
+                <tr>
+                    <th scope="row" id="edit1" contenteditable="true">{{n.title}}</th>
+                    <td scope="row" id="edit2" contenteditable="true">{{n.content}}</td>
+                    <td class="butones">
+
+                        <button>Delete</button>
+                        <button>Save</button>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
 </body>
 
 </html>

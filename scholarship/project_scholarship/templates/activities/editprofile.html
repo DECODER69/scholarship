@@ -57,7 +57,7 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="/student_announce">
                             <i class='bx bx-bell icon'></i>
                             <span class="text nav-text">Announcements</span>
                         </a>
@@ -142,8 +142,8 @@
                         <option value="5th Year">5th Year College</option>
                        
                       </select>
-                    </div><br>
-                    {% comment %} <div class="idnum">
+                    </div><br> {% comment %}
+                    <div class="idnum">
                         <label for="username">ID Number: </label>
                         <input type="text" name="username" class="username" required placeholder="ID Number" value="{{p.username}}">
 
@@ -161,10 +161,10 @@
                         <label for="names">Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </label>
-                        <input class="names" type="text" placeholder="First name"  name="firstname" value="{{p.firstname}}">
-                        <input class="names" type="text" placeholder="Last name"  name="lastname" value="{{p.lastname}}">
-                        <input class="names" type="text" placeholder="Middle name"  name="middlename" value="{{p.middlename}}">
-                        <select class="extention" name="extention" id="extention" >
+                        <input class="names" type="text" placeholder="First name" name="firstname" value="{{p.firstname}}">
+                        <input class="names" type="text" placeholder="Last name" name="lastname" value="{{p.lastname}}">
+                        <input class="names" type="text" placeholder="Middle name" name="middlename" value="{{p.middlename}}">
+                        <select class="extention" name="extention" id="extention">
                             <option >{{p.extention}}</option>
                             <option value="Jr.">Jr</option>
                             <option value="I">I</option>
@@ -180,12 +180,12 @@
                     <div class="left">
                         <div class="detail1">
                             <label for="birthday">Birthday:</label>
-                            <input class="birthday" type="date" placeholder="birthdate" name="birthday" value="{{p.birthday|date:"Y-m-d"}}">
+                            <input class="birthday" type="date" placeholder="birthdate" name="birthday" value="{{p.birthday|date:" Y-m-d "}}">
                         </div>
                         <br>
                         <div class="detail2">
                             <label for="birthplace">Birth Place:</label>
-                            <input type="text" class="birthplace"  name="birthplace" value="{{p.birthplace}}">
+                            <input type="text" class="birthplace" name="birthplace" value="{{p.birthplace}}">
                         </div>
                         <br>
                         <div class="detail10">
@@ -280,12 +280,12 @@
                     <div class="right2">
                         <div class="muni">
                             <label for="municipality">Municipality:</label>
-                            <input type="text" class="municipality"  name="municipality" placeholder="Municipality" value={{p.municipality}}>
+                            <input type="text" class="municipality" name="municipality" placeholder="Municipality" value={{p.municipality}}>
 
                         </div><br>
                         <div class="prov">
                             <label for="province">Province</label>
-                            <input type="text" class="province"  name="province" placeholder="Province" value="{{p.province}}">
+                            <input type="text" class="province" name="province" placeholder="Province" value="{{p.province}}">
                         </div>
 
                     </div>

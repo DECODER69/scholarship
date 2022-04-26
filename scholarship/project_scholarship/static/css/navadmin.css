@@ -9,3 +9,8 @@
 .navbar-brand {
     color: aliceblue !important;
 }
+
+.navbar {
+    position: fixed;
+    top: 0;
+}

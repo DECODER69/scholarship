@@ -10,7 +10,7 @@ from httplib2 import Authentication
 import project_scholarship
 # from .models import registration
 
-from .models import extenduser
+from .models import extenduser, Announcement
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
@@ -131,9 +131,9 @@ def login(request):
             return redirect('/dashboard')
         else:
             messages.success(request, 'Incorrect Credentials')
-            return render(request, 'activities/login.html')
+            return render(request, 'activities/index.html')
     else:
-        return render(request, 'activities/login.html')
+        return render(request, 'activities/index.html')
     
     
 def logout_user(request):
@@ -240,6 +240,29 @@ def revprofile(request, id):
 def review(request):
     return redirect('/revprofile')
 
+def anns (request):
+    announcementss = Announcement.objects.all()
+    return render(request, 'activities/announcements.html',{'announcementss': announcementss})
+
 
 def announcements(request):
-    return render(request, 'activities/announcements.html')
+    
+    if request.method == 'POST':
+        dataaaa = request.POST.get('announce_data')
+        title = request.POST.get('title')
+        cedric = Announcement(content=dataaaa, title=title)
+        cedric.save()
+     
+        return redirect('/anns' )
+    else:
+        return render(request, 'activities/announcements.html', {'announcementss': announcementss})
+
+
+def student_announce(request):
+    statusx = extenduser.objects.filter(user=request.user)
+    data4 = Announcement.objects.all()
+    context={
+        'statusx': statusx,
+        'data4': data4,
+    }
+    return render (request, 'activities/stud_announcements.html', context)

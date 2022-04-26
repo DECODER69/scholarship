@@ -14,14 +14,14 @@
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
     <!--<title>Dashboard Sidebar Menu</title>-->
-    <title>navigation bar</title>
+    <title>Announcements</title>
 </head>
 
 <body>
     <nav class="sidebar close">
         <header>
             <div class="image-text">
-                {% for n in status %}
+                {% for n in statusx %}
                 <span class="image">
                     <img  src="{{n.picture.url}}" alt="profile-pic" style="width: 50px; height:50px; border-radius:50%;">
                 </span>
@@ -111,25 +111,17 @@
 
     </nav><br>
     <section class="home">
+        {% for c in data4 %}
+        <div class="title">
+            <h1 class="ti">{{c.title}}</h1>
 
-        <div class="text" style="color: #387b3a;">Dashboard</div>
-        <hr><br>
-        <div class="details">
-            {% for s in status %}
-            <div class="status2"><br>
-                <h1>{{s.firstname}} {{s.lastname}}</h1>
-                <p>NAME</p>
-
-            </div><br>&nbsp;
-            <div class="status"><br>
-                <h1>{{s.school}}</h1>
-                <p>SCHOOL</p>
-            </div><br>&nbsp;
-            <div class="status1"><br>
-                <h1>{{s.status}}</h1>
-                <p>APPLICATION STATUS</p>
-            </div><br>&nbsp; {% endfor %}
         </div>
+        <div class="content">
+            <p class="con">{{c.content}}</p>
+            <p>{{c.date}}</p>
+
+        </div>
+        {% endfor %}
 
     </section><br>
 
