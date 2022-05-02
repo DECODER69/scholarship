@@ -75,6 +75,11 @@
 
 /* 3 doooooooots */
 
+.table {
+    width: 70% !important;
+    margin: auto;
+}
+
 .viewhere {
     width: 90%;
     margin: auto;
@@ -95,4 +100,22 @@
 
 .adjust {
     width: 150px;
+}
+
+.edits {
+    width: 100%;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    background-color: transparent;
+}
+
+.edits:focus {
+    outline: none;
+    background-color: rgb(247, 247, 247);
+}
+
+.the {
+    width: 80%;
 }

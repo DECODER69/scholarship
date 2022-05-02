@@ -19,7 +19,7 @@
     <form class="inner" action="{% url 'activities:announcements' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="texts">
-            <input type="text" placeholder="Title" name="title" class="title" required>
+
             <textarea rows="4" cols="100" name="announce_data" placeholder="Content" class="content" required></textarea>
             <div class="btns">
                 <button type="submit" class="post">Post</button>
@@ -28,28 +28,34 @@
         </div>
 
     </form><br>
-    <div class="viewhere">
+    <div class="home">
+
         <h1 class="uppertit">View Announcements here</h1><br>
         <table class="table table-striped">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col" class="adjust">Title</th>
+
                     <th scope="col">Content</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
                 {% for n in announcementss %}
-                <tr>
-                    <th scope="row" id="edit1" contenteditable="true">{{n.title}}</th>
-                    <td scope="row" id="edit2" contenteditable="true">{{n.content}}</td>
-                    <td class="butones">
+                <form action="{% url 'activities:andupdate' %}" method="POST">
+                    {% csrf_token %}
+                    <tr>
 
-                        <button>Delete</button>
-                        <button>Save</button>
-                    </td>
+                        <th class="the" scope="row" id="edit2"><textarea class="edits" type="text" value="{{n.content}}" name="anscontent">{{n.content}}</textarea></th>
 
-                </tr>
+                        <td class="butones">
+
+                            <button class="delete" disabled><a style="text-decoration:none" href="{% url 'activities:delete' n.id %}" > Delete</a></button>
+                            <input type="hidden" name="ansID" value="{{n.id}}"><button type="submit" class="update">Update</button>
+                        </td>
+
+                    </tr>
+
+                </form>
                 {% endfor %}
             </tbody>
         </table>

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!----======== CSS ======== -->
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stud_announce.css' %}">
 
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
@@ -111,17 +111,30 @@
 
     </nav><br>
     <section class="home">
-        {% for c in data4 %}
-        <div class="title">
-            <h1 class="ti">{{c.title}}</h1>
+        <div class="text" style="color: #387b3a;">Announcements</div>
+        <hr>
+        <br> {% for c in data4 %}
+        <div class="one">
+            <br>
 
-        </div>
-        <div class="content">
-            <p class="con">{{c.content}}</p>
-            <p>{{c.date}}</p>
 
-        </div>
-        {% endfor %}
+            <div class="title">
+                <div class="admin-logo">
+                    <i class='bx bxs-user-circle bx-lg'></i>
+                </div>
+                <div class="admin-text">
+                    <span class="ti">Admin</span>
+                    <p class="date">{{c.date}}</p>
+                </div>
+            </div><br>
+
+            <div class="content">
+                <p class="con">{{c.content}}</p>
+
+
+            </div>
+            <br>
+        </div><br>{% endfor %}
 
     </section><br>
 
@@ -152,6 +165,7 @@
             }
         });
     </script>
+    <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
 
 
 </body>

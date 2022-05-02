@@ -54,8 +54,8 @@ class extenduser(models.Model):
 
 
 class Announcement(models.Model):
-    title = models.CharField(max_length=100)
-    content = models.TextField()
+    title = models.CharField(max_length=100, null=True)
+    content = models.TextField(null=True)
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

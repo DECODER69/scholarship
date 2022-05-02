@@ -6,6 +6,7 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import context
 from httplib2 import Authentication
+from matplotlib.pyplot import title
 
 import project_scholarship
 # from .models import registration
@@ -255,7 +256,7 @@ def announcements(request):
      
         return redirect('/anns' )
     else:
-        return render(request, 'activities/announcements.html', {'announcementss': announcementss})
+        return render(request, 'activities/announcements.html')
 
 
 def student_announce(request):
@@ -266,3 +267,19 @@ def student_announce(request):
         'data4': data4,
     }
     return render (request, 'activities/stud_announcements.html', context)
+
+
+def andupdate(request):
+    if request.method == 'POST':
+        anstitle = request.POST.get('anstitle')
+        anscontent = request.POST.get('anscontent')
+        stats2 = request.POST.get('ansID')
+        Announcement.objects.filter(id=stats2) .update(content=anscontent, title=anstitle)
+        return redirect('/anns')
+    else:
+        return redirect('/anns')
+    
+    
+def delete(request, id):
+    Announcement.objects.filter(id=id).delete()
+    return redirect('/anns')
