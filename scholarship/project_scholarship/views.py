@@ -288,6 +288,11 @@ def delete(request, id):
     return redirect('/anns')
 
 
+def adminlogin(request):
+    pass
+
+
+
 
 
 # EMAILLLLLLLLLLLLLLL
