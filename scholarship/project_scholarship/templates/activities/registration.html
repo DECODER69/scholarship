@@ -63,9 +63,12 @@
 
                     <label for="username">ID Number: </label>
                     <input type="text" name="username" class="username" required placeholder="ID Number"><br><br>
-                    <div class="txt" style="text-align: center; color:#f30000" id="msg">
-                        {% for message in messages %} {{ message }} {% endfor %}
-                    </div>
+                    {% comment %} <div class="txt" style="text-align: center; color:#f30000" id="msg">
+                        {% for msg in messages %}
+                        {{msg}}
+                        {% endfor %}
+
+                    </div> {% endcomment %}
                 </div><br>
                 <div>
                     <label for="password">Password</label>
@@ -157,6 +160,12 @@
                     <div class="detail4">
                         <label for="email">Email:</label>
                         <input type="email" name="email" class="email" required>
+                        {% comment %} <div class="txt" style="text-align: center; color:#f30000" id="msg">
+                            {% for msg in messages %}
+                             {{msg}}
+                            {% endfor %}
+    
+                        </div> {% endcomment %}
                     </div><br>
                     <div class="detail3">
                         <label for="civil">Civil Status:</label>
@@ -328,6 +337,13 @@
                 $('#textarea_message').text('sheeesh');
             }
         });
+    </script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        {% for msg in messages %}
+            swal('{{msg}}')
+        {% endfor %}
     </script>
 
 </body>

@@ -966,7 +966,7 @@ ul.nostyle i {
 /* additional css */
 
 .login {
-    background-color: #ffffff;
+    background-color: transparent;
     margin-top: 33px;
     margin-bottom: 20px;
     border-radius: 5px;
@@ -976,4 +976,16 @@ ul.nostyle i {
 .login :hover {
     background-color: #1a6525;
     color: #1a6525;
+}
+
+.logo {
+    width: 90px!important;
+    font-size: 30px;
+}
+
+.spa {
+    margin: auto;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 100px;
 }

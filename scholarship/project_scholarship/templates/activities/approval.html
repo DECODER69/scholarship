@@ -37,6 +37,7 @@
                         <td>{{k.year}}</td>
                         <td>{{k.course}}</td>
                         <td>{{k.email}}</td>
+
                         <td>
                             <select name="stats" id="status">
                                 
@@ -49,10 +50,17 @@
                         </td>
                     </tr>
                     {% endfor %}
+
                 </form>
             </tbody>
         </table>
     </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        {%for msg in messages %}
+            swal('{{msg}}') 
+        {% endfor %}
+    </script>
 </body>
 
 </html>

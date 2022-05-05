@@ -305,12 +305,13 @@ body.dark .switch::before {
     position: absolute;
     top: 0;
     top: 0;
-    left: 250px;
+    left: 300px;
     height: 100vh;
     width: calc(100% - 250px);
     background-color: var(--body-color);
     transition: var(--tran-05);
     padding: 20px;
+    overflow-x: hidden;
 }
 
 .home .text {

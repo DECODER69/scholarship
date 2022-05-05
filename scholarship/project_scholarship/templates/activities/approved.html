@@ -29,7 +29,7 @@
                 </tr>
             </thead>
             <tbody>
-                <form action="{% url 'activities:update' %}" method="POST" enctype="multipart/form-data">
+                <form action="{% url 'activities:update1' %}" method="POST" enctype="multipart/form-data">
                     {% csrf_token %} {% for k in approved %}
                     <tr>
                         <th scope="row"><a href="{% url 'activities:revprofile' k.id%}" target="__blank">{{k.firstname}} {{k.lastname}}</a></th>
@@ -38,16 +38,15 @@
                         <td>{{k.course}}</td>
                         <td>{{k.email}}</td>
                         <td>
-                            <select name="stats" id="status">
+                            <select name="stats1" id="status">
                                 
-                                <option value="PENDING">PENDING</option>
-                                <option value="APPROVED">APPROVED</option>
+                           
                                 <option value="TERMINATE">TERMINATE</option>
                                 <option value="GRADUATE">GRADUATE</option>
                             </select>
                         </td>
                         <td>
-                            <input type="hidden" name="getID" value="{{k.id}}"><button class="update" id="submit" type="submit">Update</button>
+                            <input type="hidden" name="getID1" value="{{k.id}}"><button class="update" id="submit" type="submit">Update</button>
                             <input type="hidden">
                             <a href="{% url 'activities:sendmail_confirm'%}">Send mail</a>
 
@@ -58,6 +57,12 @@
             </tbody>
         </table>
     </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {% for msg in messages %}
+    <script src="{% static 'js/error.js' %}"></script>
+    {% endfor %}
+
+
 </body>
 
 </html>

@@ -41,20 +41,19 @@
             </thead>
             <tbody>
                 {% for n in announcementss %}
-                <form action="{% url 'activities:andupdate' %}" method="POST">
+                <form action="{% url 'activities:delete' n.id %}" method="POST" id="myform">
                     {% csrf_token %}
                     <tr>
-
                         <th class="the" scope="row" id="edit2"><textarea class="edits" type="text" value="{{n.content}}" name="anscontent">{{n.content}}</textarea></th>
 
                         <td class="butones">
 
-                            <button class="delete" disabled><a style="text-decoration:none" href="{% url 'activities:delete' n.id %}" > Delete</a></button>
+                            <button class="delete" disabled><a style="text-decoration:none" value="{{n.id}}"  onclick="confirm()"> Delete</a></button>
+
                             <input type="hidden" name="ansID" value="{{n.id}}"><button type="submit" class="update">Update</button>
                         </td>
 
                     </tr>
-
                 </form>
                 {% endfor %}
             </tbody>
@@ -66,10 +65,32 @@
 
 
 
+    <script>
+        function confirm() {
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        document.querySelector('#myform').submit();
+                        swal("Your Announcement has been deleted!", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Cancelled!", {
+                            icon: "error",
+                        });
+                    }
+                });
+        }
+    </script>
 
 
-
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
 </body>

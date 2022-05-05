@@ -6,7 +6,7 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import context
 from httplib2 import Authentication
-from matplotlib.pyplot import title
+
 
 import project_scholarship
 # from .models import registration
@@ -52,7 +52,7 @@ def editprofile(request):
     
     return render(request, 'activities/editprofile.html', {'edit': edit})
 
-@login_required(login_url='/logindisplay')
+@login_required(login_url='/')
 def dashboard(request):
     status = extenduser.objects.filter(user=request.user)
     count1 = extenduser.objects.filter(status='PENDING').count()
@@ -75,53 +75,57 @@ def navbar(request):
 
 def register(request):
     if request.method == 'POST':
-        user = request.POST['username']
-        if User.objects.filter(username=user).exists():
-            messages.info(request, 'Username already exists')
+        
+        department = request.POST.get('department')
+        school = request.POST.get('school')
+        course = request.POST.get('course')
+        year = request.POST.get('year')
+        username = request.POST.get('username')
+        password1 = request.POST.get('password1')
+        firstname = request.POST.get('firstname')
+        lastname = request.POST.get('lastname')
+        middlename = request.POST.get('middlename')
+        extention = request.POST.get('extention')
+        birthday = request.POST.get('birthday')
+        birthplace = request.POST.get('birthplace')
+        religion = request.POST.get('religion')
+        cellphone = request.POST.get('cellphone')
+        gender = request.POST.get('gender')
+        age = request.POST.get('age')
+        email = request.POST.get('email')
+        civil = request.POST.get('civil')
+        unit = request.POST.get('unit')
+        street = request.POST.get('street')
+        barangay = request.POST.get('barangay')
+        municipality = request.POST.get('municipality')
+        province = request.POST.get('province')
+        father = request.POST.get('father')
+        fcontact = request.POST.get('fcontact')
+        foccupation = request.POST.get('foccupation')
+        mother = request.POST.get('mother')
+        mcontact = request.POST.get('mcontact')
+        moccupation = request.POST.get('moccupation')
+        guardian = request.POST.get('guardian')
+        gcontact = request.POST.get('gcontact')
+        goccupation = request.POST.get('goccupation')
+        income = request.POST.get('income')
+        picture = request.FILES['picture']
+        if User.objects.filter(username=username).exists():
+            messages.info(request, 'ID Number already exists')
+            return redirect('/registration')
+        elif extenduser.objects.filter(email=email).exists():
+            messages.info(request, 'Email already exists')
             return redirect('/registration')
         else:
-            department = request.POST.get('department')
-            school = request.POST.get('school')
-            course = request.POST.get('course')
-            year = request.POST.get('year')
-            username = request.POST.get('username')
-            password1 = request.POST.get('password1')
-            firstname = request.POST.get('firstname')
-            lastname = request.POST.get('lastname')
-            middlename = request.POST.get('middlename')
-            extention = request.POST.get('extention')
-            birthday = request.POST.get('birthday')
-            birthplace = request.POST.get('birthplace')
-            religion = request.POST.get('religion')
-            cellphone = request.POST.get('cellphone')
-            gender = request.POST.get('gender')
-            age = request.POST.get('age')
-            email = request.POST.get('email')
-            civil = request.POST.get('civil')
-            unit = request.POST.get('unit')
-            street = request.POST.get('street')
-            barangay = request.POST.get('barangay')
-            municipality = request.POST.get('municipality')
-            province = request.POST.get('province')
-            father = request.POST.get('father')
-            fcontact = request.POST.get('fcontact')
-            foccupation = request.POST.get('foccupation')
-            mother = request.POST.get('mother')
-            mcontact = request.POST.get('mcontact')
-            moccupation = request.POST.get('moccupation')
-            guardian = request.POST.get('guardian')
-            gcontact = request.POST.get('gcontact')
-            goccupation = request.POST.get('goccupation')
-            income = request.POST.get('income')
-            picture = request.FILES['picture']
-            # UNEXPECTED ERROR == USER
+    
             user = User.objects.create_user( username=username, password=password1,)
             
             data1 = extenduser(picture=picture,department=department, school=school, course=course, year=year, firstname=firstname, lastname=lastname, middlename=middlename, extention=extention, birthday=birthday, birthplace=birthplace, religion=religion, cellphone=cellphone,gender=gender, age=age,email=email, civil=civil, unit=unit, street=street, barangay=barangay, municipality=municipality, province=province,fname=father, fcontact=fcontact, foccupation=foccupation, mname=mother, mcontact=mcontact, moccupation=moccupation, gname=guardian, gcontact=gcontact, goccupation=goccupation, income=income, user=user)
             data1.save()
             auth.login(request, user)
-            
-            return redirect('/registration/')
+            messages.info(request, 'Account created successfully')
+        
+            return redirect('/')
     else:
         return redirect('/registration/')
     
@@ -230,8 +234,18 @@ def update(request):
     stat2 = request.POST.get('getID')
 
     extenduser.objects.filter(id=stat2).update(status=stat1)
+    messages.success(request, 'Status Updated Successfully')
     print(stat1, stat2)
     return redirect('/approval')
+
+def update1(request):
+    stat0 = request.POST.get('stats1')
+    stat01 = request.POST.get('getID1')
+
+    extenduser.objects.filter(id=stat01).update(status=stat0)
+    messages.success(request, 'Status Updated Successfully')
+    print(stat0, stat01)
+    return redirect('/active')
 
 
 

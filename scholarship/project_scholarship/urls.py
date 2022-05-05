@@ -35,5 +35,6 @@ urlpatterns = [
     path('anns/', views.anns, name='anns'),
     path('andupdate/', views.andupdate, name='andupdate'),
     path('delete/<str:id>', views.delete, name='delete'),
-    path('sendmail_confirm/', views.sendmail_confirm, name='sendmail_confirm')
+    path('sendmail_confirm/', views.sendmail_confirm, name='sendmail_confirm'),
+    path('update1/', views.update1, name='update1'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
