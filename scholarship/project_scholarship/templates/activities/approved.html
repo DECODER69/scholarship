@@ -48,6 +48,9 @@
                         </td>
                         <td>
                             <input type="hidden" name="getID" value="{{k.id}}"><button class="update" id="submit" type="submit">Update</button>
+                            <input type="hidden">
+                            <a href="{% url 'activities:sendmail_confirm'%}">Send mail</a>
+
                         </td>
                     </tr>
                     {% endfor %}

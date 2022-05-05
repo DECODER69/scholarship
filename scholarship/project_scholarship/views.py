@@ -30,6 +30,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.mail import send_mail
 
 
+from django.contrib import messages
+from django.core.mail import send_mail
+
 
 # Create your views here.
 def index(request):
@@ -283,3 +286,28 @@ def andupdate(request):
 def delete(request, id):
     Announcement.objects.filter(id=id).delete()
     return redirect('/anns')
+
+
+
+
+# EMAILLLLLLLLLLLLLLL
+
+def sendmail_confirm(request):
+ 
+   
+    var = 'Good Day MR/MS '+ name + '\n'+ '\n' + 'This is to confirm your application for Provincial Scholarship has been Approved ! Please wait for an Announcements on your portal. Thank you!'
+    message_sent = var
+    subject_sent = 'SCHOLARSHIP'
+    recipient_sent = ['christian.rapal@gsfe.tupcavite.edu.ph']
+    send_mail(subject_sent, message_sent, 'christianrapal2000@gmail.com', recipient_sent, fail_silently=False,auth_user=None, auth_password=None)
+    print('goods')
+    return redirect('/active')
+
+def sendmail_denied(name,purp,date,depart,mail):
+    print('goods')
+    var = 'Good Day MR/MS '+ name + '\n'+ '\n' +  'We would like to inform you on your appointment for' + depart + ' on ' + str(date) +  '\n'+ '\n' + 'has been declined for some reason.' + '\n'+ '\n''If you have any queries feel free to reply to this email.'+'\n' + '\n' +'Thank You!!!'+'\n'+ depart +'\n'+'TUP Cavite'
+    message_sent = var
+    subject_sent = 'TUPC ONLINE APPOINTMENT'
+    recipient_sent = [mail,]
+    send_mail(subject_sent, message_sent, 'tupc.online.appointment@gmail.com', recipient_sent, fail_silently=False,)
+    print('goods')
