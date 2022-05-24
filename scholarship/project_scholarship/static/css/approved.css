@@ -3,3 +3,22 @@
     margin-left: 10px;
     font-style: italic;
 }
+
+.thead {
+    background-color: #627f81;
+}
+
+.split {
+    display: flex;
+    justify-content: space-between;
+}
+
+.split1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+#btn {
+    margin-right: 40px;
+    margin-top: 20px;
+}

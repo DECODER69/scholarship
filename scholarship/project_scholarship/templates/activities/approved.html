@@ -12,13 +12,17 @@
 
 <body>
     {% include 'activities/navadmin.html' %}
-    <div class="text">Active Scholars</div>
+    <div class="split" id="split">
+        <div class="text">Approved</div>
+        <a href="/email" target="_blank"><button type="button" class="btn btn-info" id="btn"><i class="bi bi-envelope">  Go to Email</i></button></a>
+    </div>
+
     <hr>
     <div>
-        <table class="table table-hover">
+
+        <table class="table">
             <thead>
                 <tr>
-
                     <th scope="col">Full name</th>
                     <th scope="col">School</th>
                     <th scope="col">Year/Grade</th>
@@ -29,40 +33,36 @@
                 </tr>
             </thead>
             <tbody>
-                <form action="{% url 'activities:update1' %}" method="POST" enctype="multipart/form-data">
-                    {% csrf_token %} {% for k in approved %}
-                    <tr>
-                        <th scope="row"><a href="{% url 'activities:revprofile' k.id%}" target="__blank">{{k.firstname}} {{k.lastname}}</a></th>
-                        <td>{{k.school}}</td>
-                        <td>{{k.year}}</td>
-                        <td>{{k.course}}</td>
-                        <td>{{k.email}}</td>
+
+                {% for k in approved %}
+                <tr>
+                    <th scope="row"><a href="{% url 'activities:revprofile' k.id%}" target="__blank">{{k.firstname}} {{k.lastname}}</a></th>
+                    <td>{{k.school}}</td>
+                    <td>{{k.year}}</td>
+                    <td>{{k.course}}</td>
+                    <td>{{k.email}}</td>
+                    <form action="{% url 'activities:update1' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
                         <td>
-                            <select name="stats1" id="status">
-                                
-                           
-                                <option value="TERMINATE">TERMINATE</option>
+                            <select name="stats1">
                                 <option value="GRADUATE">GRADUATE</option>
+                                <option value="TERMINATED">TERMINATE</option>
                             </select>
                         </td>
                         <td>
-                            <input type="hidden" name="getID1" value="{{k.id}}"><button class="update" id="submit" type="submit">Update</button>
-                            <input type="hidden">
-                            <a href="{% url 'activities:sendmail_confirm'%}">Send mail</a>
-
+                            <input type="hidden" name="getID1" value="{{k.id}}"><button type="submit" class="btn btn-success"><i class="bi bi-check-circle-fill"> Update</i></button>
                         </td>
-                    </tr>
-                    {% endfor %}
-                </form>
+                    </form>
+                </tr>
+                {% endfor %}
             </tbody>
         </table>
+
     </div>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    {% for msg in messages %}
-    <script src="{% static 'js/error.js' %}"></script>
-    {% endfor %}
-
-
+    <script>
+        document.getElementById("element").style.display = "none";
+    </script>
 </body>
 
 </html>

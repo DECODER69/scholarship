@@ -12,16 +12,16 @@
 
 <body>
     {% include 'activities/navadmin.html' %}
-    <div class="text">Approval</div>
+    <div class="text">Pending Applications</div>
     <hr>
     <div>
-        <table class="table table-hover">
+
+        <table class="table ">
             <thead>
                 <tr>
-
                     <th scope="col">Full name</th>
                     <th scope="col">School</th>
-                    <th scope="col">Year/Grade</th>
+                    <th scope="col">Year /Grade</th>
                     <th scope="col">Course</th>
                     <th scope="col">Email</th>
                     <th scope="col">Options</th>
@@ -29,38 +29,35 @@
                 </tr>
             </thead>
             <tbody>
-                <form action="{% url 'activities:update' %}" method="POST" enctype="multipart/form-data">
-                    {% csrf_token %} {% for k in approvals %}
-                    <tr>
-                        <th scope="row"><a href="{% url 'activities:revprofile' k.id%}" target="__blank">{{k.firstname}} {{k.lastname}}</a></th>
-                        <td>{{k.school}}</td>
-                        <td>{{k.year}}</td>
-                        <td>{{k.course}}</td>
-                        <td>{{k.email}}</td>
-
+                {% for k in approvals %}
+                <tr>
+                    <th scope="row"><a href="{% url 'activities:revprofile' k.id%}" target="__blank">{{k.firstname}} {{k.lastname}}</a></th>
+                    <td>{{k.school}}</td>
+                    <td>{{k.year}}</td>
+                    <td>{{k.course}}</td>
+                    <td>{{k.email}}</td>
+                    <form action="{% url 'activities:approval' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
                         <td>
-                            <select name="stats" id="status">
-                                
-                                <option value="PENDING">PENDING</option>
+                            <select name="status1" id="status">
+                                <option selected="selected" disabled>Select</option>
                                 <option value="APPROVED">APPROVED</option>
+                                <option value="DECLINED">DECLINED</option>
                             </select>
                         </td>
                         <td>
-                            <input type="hidden" name="getID" value="{{k.id}}"><button class="update" id="submit" type="submit">Update</button>
+                            <input type="hidden" name="getID3" value="{{k.id}}"><button type="submit" class="btn btn-success"><i class="bi bi-check-circle-fill"> Update</i></button>
                         </td>
-                    </tr>
-                    {% endfor %}
-
-                </form>
+                    </form>
+                </tr>
+                {% endfor %}
             </tbody>
         </table>
+
+
     </div>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-        {%for msg in messages %}
-            swal('{{msg}}') 
-        {% endfor %}
-    </script>
+
 </body>
 
 </html>

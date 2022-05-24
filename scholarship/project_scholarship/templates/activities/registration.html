@@ -62,11 +62,9 @@
                 <div class="idnum">
 
                     <label for="username">ID Number: </label>
-                    <input type="text" name="username" class="username" required placeholder="ID Number"><br><br>
-                    {% comment %} <div class="txt" style="text-align: center; color:#f30000" id="msg">
-                        {% for msg in messages %}
-                        {{msg}}
-                        {% endfor %}
+                    <input type="text" name="username" class="username" required placeholder="ID Number"><br><br> {% comment %}
+                    <div class="txt" style="text-align: center; color:#f30000" id="msg">
+                        {% for msg in messages %} {{msg}} {% endfor %}
 
                     </div> {% endcomment %}
                 </div><br>
@@ -138,7 +136,7 @@
                     </div><br>
                     <div class="details12">
                         <label for="cpnumber">Cellphone Number:</label>
-                        <input type="number" maxlength="11" class="cpnumber" name="cellphone" id="cpnumber">
+                        <input type="number" maxlength="11" class="cpnumber" name="cellphone" id="cpnumber" required>
                         <span class="hint" id="textarea_message"></span>
                     </div>
 
@@ -159,12 +157,10 @@
                     </div><br>
                     <div class="detail4">
                         <label for="email">Email:</label>
-                        <input type="email" name="email" class="email" required>
-                        {% comment %} <div class="txt" style="text-align: center; color:#f30000" id="msg">
-                            {% for msg in messages %}
-                             {{msg}}
-                            {% endfor %}
-    
+                        <input type="email" name="email" class="email" required> {% comment %}
+                        <div class="txt" style="text-align: center; color:#f30000" id="msg">
+                            {% for msg in messages %} {{msg}} {% endfor %}
+
                         </div> {% endcomment %}
                     </div><br>
                     <div class="detail3">
@@ -186,17 +182,7 @@
             <div class="division2">
                 <p class="perma">Permanent Address</p>
                 <div class="left2">
-                    <div class="unt">
 
-                        <label for="unit">Unit #:</label>
-                        <input type="text" name="unit" class="unit" placeholder="Unit #" required>
-                    </div><br>
-
-
-                    <div class="strt">
-                        <label for="street">Street:</label>
-                        <input type="text" name="street" class="street" placeholder="Street" required>
-                    </div><br>
                     <div class="brgy">
                         <label for="barangay">Barangay:</label>
                         <input type="text" name="barangay" class="barangay" placeholder="barangay" required>
@@ -341,9 +327,11 @@
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
-        {% for msg in messages %}
-            swal('{{msg}}')
-        {% endfor %}
+        { %
+            for msg in messages %
+        }
+        swal('{{msg}}') { % endfor %
+        }
     </script>
 
 </body>

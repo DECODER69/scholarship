@@ -1,0 +1,74 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>email</title>
+    <link rel="stylesheet" href="{% static 'css/approved.css' %}">
+
+</head>
+
+<body>
+    <form action="{% url 'activities:sendmail_confirm'  %}" method="POST" enctype="multipart/form-data">
+        {% include 'activities/navadmin.html' %}
+        <div class="split1">
+            <div class="text">Send Email</div>
+            <button type="submit" class="btn btn-info" id="btn"><i class="bi bi-envelope">  Send Email</i></button>
+        </div>
+        <hr>
+        <div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+
+                        <th scope="col">Full name</th>
+                        <th scope="col">School</th>
+                        <th scope="col">Year/Grade</th>
+                        <th scope="col">Course</th>
+                        <th scope="col">Email</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    {% csrf_token %} {% for k in send %}
+
+                    <tr>
+                        <th scope="row"><input type="checkbox" name="checked" value="{{k.email}}">&nbsp;<a href="{% url 'activities:revprofile' k.id %}" target="__blank">{{k.firstname}} {{k.lastname}}</a></th>
+                        <td>{{k.school}}</td>
+                        <td>{{k.year}}</td>
+                        <td>{{k.course}}</td>
+                        <td>{{k.email}}</td>
+
+                    </tr>
+                    {% endfor %}
+
+
+                </tbody>
+            </table>
+        </div>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        <!-- <script>
+        { %
+            for msg in messages %
+        }
+
+        function error() {
+            swal("{{msg}}");
+
+        })
+
+        } { % endfor %
+        }
+    </script> -->
+
+
+
+    </form>
+</body>
+
+</html>

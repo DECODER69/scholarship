@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Announcements</title>
     <link rel="stylesheet" href="{% static 'css/announcements.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
 
 </head>
 
@@ -22,8 +23,7 @@
 
             <textarea rows="4" cols="100" name="announce_data" placeholder="Content" class="content" required></textarea>
             <div class="btns">
-                <button type="submit" class="post">Post</button>
-
+                <button type="submit" class="btn btn-success"><i class="bi bi-check-circle-fill"> Post</i></button>
             </div>
         </div>
 
@@ -36,21 +36,22 @@
                 <tr>
 
                     <th scope="col">Content</th>
+                    <th scope="col">Date and Time</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
                 {% for n in announcementss %}
-                <form action="{% url 'activities:delete' n.id %}" method="POST" id="myform">
+                <form action="{% url 'activities:andupdate'%}" method="POST" id="myform">
                     {% csrf_token %}
                     <tr>
                         <th class="the" scope="row" id="edit2"><textarea class="edits" type="text" value="{{n.content}}" name="anscontent">{{n.content}}</textarea></th>
-
+                        <td>{{n.date}}</td>
                         <td class="butones">
+                            <a href="{% url 'activities:delete' n.id%}" style="text-decoration:none" value="{{n.id}}"><button type="button" class="btn btn-danger"><i class="bi bi-trash-fill"> Delete</i></button></a> {% comment %} <button class="delete"
+                                disabled><a onclick="confirm()" href="{% url 'activities:delete' n.id%}" style="text-decoration:none" value="{{n.id}}"  > Delete</a></button> {% endcomment %}
 
-                            <button class="delete" disabled><a style="text-decoration:none" value="{{n.id}}"  onclick="confirm()"> Delete</a></button>
-
-                            <input type="hidden" name="ansID" value="{{n.id}}"><button type="submit" class="update">Update</button>
+                            <input type="hidden" name="ansID" value="{{n.id}}"><button type="submit" class="btn btn-success"><i class="bi bi-check-circle-fill"> Update</i></button>
                         </td>
 
                     </tr>
@@ -61,10 +62,6 @@
 
 
     </div>
-
-
-
-
     <script>
         function confirm() {
             swal({

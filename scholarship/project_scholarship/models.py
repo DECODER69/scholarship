@@ -5,14 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class extenduser(models.Model):
-    STATUS = (
-    ("PENDING", "PENDING"),
-    ("FOR REVIEW", "FOR REVIEW"),
-    ("APPROVED", "APPROVED"),
-    ("REJECTED", "REJECTED"),
-    ("GRADUATED", "GRADUATED"),
-    )
-    status = models.CharField(max_length=20, choices=STATUS, default="PENDING")
+    status = models.CharField(max_length=20, default="PENDING")
     department = models.CharField(max_length=100)
     school = models.CharField(max_length=100)
     course = models.CharField(max_length=100)
@@ -29,19 +22,17 @@ class extenduser(models.Model):
     age =  models.DecimalField(max_digits=11, decimal_places=0, default='')
     email = models.EmailField(max_length=254, null=True, unique=True)
     civil = models.CharField(max_length=10)
-    unit = models.CharField(max_length=100)
-    street = models.CharField(max_length=100)
     barangay = models.CharField(max_length=100)
     municipality = models.CharField(max_length=100)
     province = models.CharField(max_length=100)
     fname = models.CharField(max_length=100)
-    fcontact =  models.BigIntegerField(null=True)
+    fcontact =  models.BigIntegerField(null=True, default='')
     foccupation =  models.CharField(max_length=100)
     mname = models.CharField(max_length=100)
-    mcontact = models.BigIntegerField( null=True)
+    mcontact = models.BigIntegerField(null=True, default='')
     moccupation = models.CharField(max_length=100)
     gname = models.CharField(max_length=100)
-    gcontact =  models.BigIntegerField( null=True)
+    gcontact =  models.BigIntegerField( null=True, default='')
     goccupation = models.CharField(max_length=100)
     income = models.CharField(max_length=100)
     picture = models.ImageField(upload_to='images/', null=False)
@@ -60,3 +51,5 @@ class Announcement(models.Model):
 
     def __str__(self):
         return self.title
+    
+

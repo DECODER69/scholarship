@@ -6,40 +6,31 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import context
 from httplib2 import Authentication
-
-
 import project_scholarship
-# from .models import registration
-
 from .models import extenduser, Announcement
-
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
-
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
-
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-
 from django.http import FileResponse
 from django.contrib.auth.forms import UserCreationForm
-
 from django.core.mail import send_mail
-
-
 from django.contrib import messages
 from django.core.mail import send_mail
+from django.contrib.auth import login as Login_process 
 
 
-# Create your views here.
 def index(request):
     return render(request, 'activities/index.html')
 
 def registration(request):
     return render(request, 'activities/registration.html')
+def signup(request):
+    return render(request, 'activities/signup.html')
 
 def logindisplay(request):
     return render(request, 'activities/login.html')
@@ -48,10 +39,14 @@ def navadmin(request):
 
 def editprofile(request):
     edit = extenduser.objects.filter(user=request.user)
-    
-    
     return render(request, 'activities/editprofile.html', {'edit': edit})
 
+def email(request):
+    send = extenduser.objects.filter(status='APPROVED')
+    context={
+        'send': send,
+    }
+    return render(request, 'activities/email.html', context)
 @login_required(login_url='/')
 def dashboard(request):
     status = extenduser.objects.filter(user=request.user)
@@ -65,17 +60,14 @@ def dashboard(request):
         'count3':  count3,
     }
     return render(request, 'activities/dashboard.html', context)
-
 def navbar(request):
     navdata = extenduser.objects.filter(user=request.user)
     context = {
         'navdata': navdata,
     }
     return render(request, 'activities/navigation.html', context)
-
 def register(request):
     if request.method == 'POST':
-        
         department = request.POST.get('department')
         school = request.POST.get('school')
         course = request.POST.get('course')
@@ -94,8 +86,6 @@ def register(request):
         age = request.POST.get('age')
         email = request.POST.get('email')
         civil = request.POST.get('civil')
-        unit = request.POST.get('unit')
-        street = request.POST.get('street')
         barangay = request.POST.get('barangay')
         municipality = request.POST.get('municipality')
         province = request.POST.get('province')
@@ -117,20 +107,14 @@ def register(request):
             messages.info(request, 'Email already exists')
             return redirect('/registration')
         else:
-    
             user = User.objects.create_user( username=username, password=password1,)
-            
-            data1 = extenduser(picture=picture,department=department, school=school, course=course, year=year, firstname=firstname, lastname=lastname, middlename=middlename, extention=extention, birthday=birthday, birthplace=birthplace, religion=religion, cellphone=cellphone,gender=gender, age=age,email=email, civil=civil, unit=unit, street=street, barangay=barangay, municipality=municipality, province=province,fname=father, fcontact=fcontact, foccupation=foccupation, mname=mother, mcontact=mcontact, moccupation=moccupation, gname=guardian, gcontact=gcontact, goccupation=goccupation, income=income, user=user)
+            data1 = extenduser(picture=picture,department=department, school=school, course=course, year=year, firstname=firstname, lastname=lastname, middlename=middlename, extention=extention, birthday=birthday, birthplace=birthplace, religion=religion, cellphone=cellphone,gender=gender, age=age,email=email, civil=civil,  barangay=barangay, municipality=municipality, province=province,fname=father, fcontact=fcontact, foccupation=foccupation, mname=mother, mcontact=mcontact, moccupation=moccupation, gname=guardian, gcontact=gcontact, goccupation=goccupation, income=income, user=user)
             data1.save()
             auth.login(request, user)
             messages.info(request, 'Account created successfully')
-        
             return redirect('/')
     else:
         return redirect('/registration/')
-    
-    
-    
 def login(request):
     if request.method == 'POST':
         user = auth.authenticate(username=request.POST['username'], password=request.POST['password'])
@@ -142,14 +126,9 @@ def login(request):
             return render(request, 'activities/index.html')
     else:
         return render(request, 'activities/index.html')
-    
-    
 def logout_user(request):
     logout(request)
     return redirect('/')
-
-
-
 def edit(request):
     edit = extenduser.objects.filter(user=request.user.id)
     if request.method =='POST':
@@ -171,8 +150,6 @@ def edit(request):
         age = request.POST.get('age')
         email = request.POST.get('email')
         civil = request.POST.get('civil')
-        unit = request.POST.get('unit')
-        street = request.POST.get('street')
         barangay = request.POST.get('barangay')
         municipality = request.POST.get('municipality')
         province = request.POST.get('province')
@@ -187,33 +164,34 @@ def edit(request):
         goccupation = request.POST.get('goccupation')
         income = request.POST.get('income')
         # pictures = request.FILES['pictures']
-        
-        extenduser.objects.filter(user=request.user).update(department=department, school=school, course=course, year=year, firstname=firstname, lastname=lastname, middlename=middlename, extention=extention, birthday=birthday, birthplace=birthplace, religion=religion, cellphone=cellphone,gender=gender, age=age,email=email, civil=civil, unit=unit, street=street, barangay=barangay, municipality=municipality, province=province,fname=father, fcontact=fcontact, foccupation=foccupation, mname=mother, mcontact=mcontact, moccupation=moccupation, gname=guardian, gcontact=gcontact, goccupation=goccupation, income=income)
+        extenduser.objects.filter(user=request.user).update(department=department, school=school, course=course, year=year, firstname=firstname, lastname=lastname, middlename=middlename, extention=extention, birthday=birthday, birthplace=birthplace, religion=religion, cellphone=cellphone,gender=gender, age=age,email=email, civil=civil,  barangay=barangay, municipality=municipality, province=province,fname=father, fcontact=fcontact, foccupation=foccupation, mname=mother, mcontact=mcontact, moccupation=moccupation, gname=guardian, gcontact=gcontact, goccupation=goccupation, income=income)
     return render (request, 'activities/editprofile.html', {'edit':edit})
-
-
 def admindashboard(request):
     
     count5 = extenduser.objects.filter(status='PENDING').count()
     count6 = extenduser.objects.filter(status='APPROVED').count()
     count7 = extenduser.objects.filter(status='GRADUATE').count()
     context = {
-     
         'count5':  count5,
         'count6':  count6,
         'count7':  count7,
     }
-
     return render(request,'activities/admindashboard.html',context )
-
-
 def approval(request):
     approvals = extenduser.objects.filter(status='PENDING')
     context={
         'approvals': approvals,
     }
+    if request.method == 'POST':
+        stat1 = request.POST.get('status1')
+        stat2 = request.POST.get('getID3')
+        if stat1 is not None:
+            extenduser.objects.filter(id=stat2).update(status=stat1)
+            return redirect('/approval')
+        else:
+            messages.success(request, 'Please select status')
+        print(stat1, stat2)
     return render(request, 'activities/approval.html', context)
-
 def active(request):
     approved = extenduser.objects.filter(status='APPROVED')
     context={
@@ -230,13 +208,16 @@ def graduate(request):
 
 
 def update(request):
-    stat1 = request.POST.get('stats')
-    stat2 = request.POST.get('getID')
-
-    extenduser.objects.filter(id=stat2).update(status=stat1)
-    messages.success(request, 'Status Updated Successfully')
-    print(stat1, stat2)
-    return redirect('/approval')
+    if request.method == 'POST':
+        stat1 = request.POST.get('status1')
+        stat2 = request.POST.get('getID3')
+        if stat1 is not None:
+            extenduser.objects.filter(id=stat2).update(status=stat1)
+            return redirect('/approval')
+        else:
+            messages.success(request, 'Please select status')
+        print(stat1, stat2)
+        return redirect('/approval')
 
 def update1(request):
     stat0 = request.POST.get('stats1')
@@ -244,7 +225,7 @@ def update1(request):
 
     extenduser.objects.filter(id=stat01).update(status=stat0)
     messages.success(request, 'Status Updated Successfully')
-    print(stat0, stat01)
+
     return redirect('/active')
 
 
@@ -264,7 +245,6 @@ def anns (request):
 
 
 def announcements(request):
-    
     if request.method == 'POST':
         dataaaa = request.POST.get('announce_data')
         title = request.POST.get('title')
@@ -302,31 +282,45 @@ def delete(request, id):
     return redirect('/anns')
 
 
-def adminlogin(request):
-    pass
-
-
-
-
-
 # EMAILLLLLLLLLLLLLLL
-
-def sendmail_confirm(request):
  
-   
-    var = 'Good Day MR/MS '+ name + '\n'+ '\n' + 'This is to confirm your application for Provincial Scholarship has been Approved ! Please wait for an Announcements on your portal. Thank you!'
-    message_sent = var
-    subject_sent = 'SCHOLARSHIP'
-    recipient_sent = ['christian.rapal@gsfe.tupcavite.edu.ph']
-    send_mail(subject_sent, message_sent, 'christianrapal2000@gmail.com', recipient_sent, fail_silently=False,auth_user=None, auth_password=None)
-    print('goods')
-    return redirect('/active')
+def sendmail_confirm( request):
+    if request.method == 'POST':
+        emails = request.POST.getlist('checked')
+        send_mail('e-Scholarship', 
+                'Hello this is an email from e-Scholarship. Bigyan ng jacket yaaaan',
+                'e-Scholarship',
+                ((emails)),
+                fail_silently=False)
+        print(emails)
+    return redirect('/email')
 
-def sendmail_denied(name,purp,date,depart,mail):
-    print('goods')
-    var = 'Good Day MR/MS '+ name + '\n'+ '\n' +  'We would like to inform you on your appointment for' + depart + ' on ' + str(date) +  '\n'+ '\n' + 'has been declined for some reason.' + '\n'+ '\n''If you have any queries feel free to reply to this email.'+'\n' + '\n' +'Thank You!!!'+'\n'+ depart +'\n'+'TUP Cavite'
-    message_sent = var
-    subject_sent = 'TUPC ONLINE APPOINTMENT'
-    recipient_sent = [mail,]
-    send_mail(subject_sent, message_sent, 'tupc.online.appointment@gmail.com', recipient_sent, fail_silently=False,)
-    print('goods')
+
+def adminlogin(request):
+    if request.method == 'POST':
+        username = request.POST.get('ausername')
+        password = request.POST.get('apassword')
+        user = authenticate( username=username, password=password,  is_superuser = True)
+        if user is not None:
+            login(request, user)
+            return redirect('/admindashboard')
+        else:
+            messages.success(request, 'Invalid username or password')
+            return redirect('/adminlogin')
+
+    return render(request, 'activities/admin.html')
+def adminlogout(request):
+    logout(request)
+    return redirect('/')
+
+def xyz_register(request):
+    return render(request, 'activities/admin_reg.html')
+
+def adregister(request):
+    adusername = request.POST.get('adusername')
+    adpassword = request.POST.get('adpassword')
+    profile = User.objects.create_user(username=adusername, password=adpassword)
+    profile.is_staff = True
+    profile.is_superuser = True
+    profile.save()
+    return redirect('/xyz_register')

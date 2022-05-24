@@ -312,6 +312,7 @@ body.dark .switch::before {
     transition: var(--tran-05);
     padding: 20px;
     overflow-x: hidden;
+    background-image: url('images/logo.png');
 }
 
 .home .text {
