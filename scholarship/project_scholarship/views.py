@@ -1,4 +1,5 @@
 from dataclasses import field
+from email import message
 from os import name
 
 from django.contrib import messages 
@@ -7,6 +8,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import context
 from httplib2 import Authentication
 import project_scholarship
+
 from .models import extenduser, Announcement
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
@@ -66,59 +68,35 @@ def navbar(request):
         'navdata': navdata,
     }
     return render(request, 'activities/navigation.html', context)
+
 def register(request):
     if request.method == 'POST':
-        department = request.POST.get('department')
-        school = request.POST.get('school')
-        course = request.POST.get('course')
-        year = request.POST.get('year')
         username = request.POST.get('username')
-        password1 = request.POST.get('password1')
+        password = request.POST.get('password')
         firstname = request.POST.get('firstname')
         lastname = request.POST.get('lastname')
         middlename = request.POST.get('middlename')
-        extention = request.POST.get('extention')
-        birthday = request.POST.get('birthday')
-        birthplace = request.POST.get('birthplace')
-        religion = request.POST.get('religion')
-        cellphone = request.POST.get('cellphone')
-        gender = request.POST.get('gender')
-        age = request.POST.get('age')
-        email = request.POST.get('email')
-        civil = request.POST.get('civil')
-        barangay = request.POST.get('barangay')
-        municipality = request.POST.get('municipality')
-        province = request.POST.get('province')
-        father = request.POST.get('father')
-        fcontact = request.POST.get('fcontact')
-        foccupation = request.POST.get('foccupation')
-        mother = request.POST.get('mother')
-        mcontact = request.POST.get('mcontact')
-        moccupation = request.POST.get('moccupation')
-        guardian = request.POST.get('guardian')
-        gcontact = request.POST.get('gcontact')
-        goccupation = request.POST.get('goccupation')
-        income = request.POST.get('income')
         picture = request.FILES['picture']
+     
         if User.objects.filter(username=username).exists():
-            messages.info(request, 'ID Number already exists')
-            return redirect('/registration')
-        elif extenduser.objects.filter(email=email).exists():
-            messages.info(request, 'Email already exists')
+            messages.error(request, 'ID Number ' + str (username) + ' Already Exist !')
             return redirect('/registration')
         else:
-            user = User.objects.create_user( username=username, password=password1,)
-            data1 = extenduser(picture=picture,department=department, school=school, course=course, year=year, firstname=firstname, lastname=lastname, middlename=middlename, extention=extention, birthday=birthday, birthplace=birthplace, religion=religion, cellphone=cellphone,gender=gender, age=age,email=email, civil=civil,  barangay=barangay, municipality=municipality, province=province,fname=father, fcontact=fcontact, foccupation=foccupation, mname=mother, mcontact=mcontact, moccupation=moccupation, gname=guardian, gcontact=gcontact, goccupation=goccupation, income=income, user=user)
-            data1.save()
+            user = User.objects.create_user(username=username, password=password,)
+            datas = extenduser(firstname=firstname, lastname=lastname, middlename=middlename, picture=picture, user=user,)
+            datas.save()
             auth.login(request, user)
             messages.info(request, 'Account created successfully')
-            return redirect('/')
+            return redirect('/registration')
     else:
         return redirect('/registration/')
+    
+    
+    
 def login(request):
     if request.method == 'POST':
         user = auth.authenticate(username=request.POST['username'], password=request.POST['password'])
-        if user is not None:
+        if user is not None :
             auth.login(request, user)
             return redirect('/dashboard')
         else:
@@ -166,32 +144,44 @@ def edit(request):
         # pictures = request.FILES['pictures']
         extenduser.objects.filter(user=request.user).update(department=department, school=school, course=course, year=year, firstname=firstname, lastname=lastname, middlename=middlename, extention=extention, birthday=birthday, birthplace=birthplace, religion=religion, cellphone=cellphone,gender=gender, age=age,email=email, civil=civil,  barangay=barangay, municipality=municipality, province=province,fname=father, fcontact=fcontact, foccupation=foccupation, mname=mother, mcontact=mcontact, moccupation=moccupation, gname=guardian, gcontact=gcontact, goccupation=goccupation, income=income)
     return render (request, 'activities/editprofile.html', {'edit':edit})
+
+def nots(request):
+    return render(request,'activities/not.html')
+
+
+@login_required(login_url='/xyz_login')
 def admindashboard(request):
-    
-    count5 = extenduser.objects.filter(status='PENDING').count()
-    count6 = extenduser.objects.filter(status='APPROVED').count()
-    count7 = extenduser.objects.filter(status='GRADUATE').count()
-    context = {
-        'count5':  count5,
-        'count6':  count6,
-        'count7':  count7,
-    }
-    return render(request,'activities/admindashboard.html',context )
+    if request.user.is_staff:
+        count5 = extenduser.objects.filter(status='PENDING').count()
+        count6 = extenduser.objects.filter(status='APPROVED').count()
+        count7 = extenduser.objects.filter(status='GRADUATE').count()
+        context = {
+            'count5':  count5,
+            'count6':  count6,
+            'count7':  count7,
+        }
+        return render(request,'activities/admindashboard.html',context )
+    else:
+        messages.error(request, 'Unauthorized User')
+        return render(request, 'activities/admin.html')
 def approval(request):
-    approvals = extenduser.objects.filter(status='PENDING')
-    context={
-        'approvals': approvals,
-    }
-    if request.method == 'POST':
-        stat1 = request.POST.get('status1')
-        stat2 = request.POST.get('getID3')
-        if stat1 is not None:
-            extenduser.objects.filter(id=stat2).update(status=stat1)
-            return redirect('/approval')
-        else:
-            messages.success(request, 'Please select status')
-        print(stat1, stat2)
-    return render(request, 'activities/approval.html', context)
+    if request.user.is_staff:
+        approvals = extenduser.objects.filter(status='PENDING')
+        context={
+            'approvals': approvals,
+        }
+        if request.method == 'POST':
+            stat1 = request.POST.get('status1')
+            stat2 = request.POST.get('getID3')
+            if stat1 is not None:
+                extenduser.objects.filter(id=stat2).update(status=stat1)
+                return redirect('/approval')
+            else:
+                messages.success(request, 'Please select status')
+            print(stat1, stat2)
+        return render(request, 'activities/approval.html', context)
+    else:
+        return render(request, 'activities/admin.html')
 def active(request):
     approved = extenduser.objects.filter(status='APPROVED')
     context={
@@ -292,35 +282,39 @@ def sendmail_confirm( request):
                 'e-Scholarship',
                 ((emails)),
                 fail_silently=False)
+        messages.success(request, 'Email Sent Successfully')
         print(emails)
     return redirect('/email')
 
 
-def adminlogin(request):
+def xyz_login(request):
+    if request.user.is_authenticated:
+        return redirect('/admindashboard')
     if request.method == 'POST':
-        username = request.POST.get('ausername')
-        password = request.POST.get('apassword')
-        user = authenticate( username=username, password=password,  is_superuser = True)
-        if user is not None:
-            login(request, user)
+        user = auth.authenticate(username=request.POST['ausername'], password=request.POST['apassword'])
+        if user is not None and user.is_staff:
+            auth.login(request, user)
             return redirect('/admindashboard')
         else:
-            messages.success(request, 'Invalid username or password')
-            return redirect('/adminlogin')
+            messages.error(request, 'Invalid username or password')
+            return render(request, 'activities/admin.html')
 
     return render(request, 'activities/admin.html')
 def adminlogout(request):
     logout(request)
-    return redirect('/')
+    return redirect('/xyz_login')
 
-def xyz_register(request):
+def abcregister(request):
     return render(request, 'activities/admin_reg.html')
 
 def adregister(request):
-    adusername = request.POST.get('adusername')
-    adpassword = request.POST.get('adpassword')
-    profile = User.objects.create_user(username=adusername, password=adpassword)
-    profile.is_staff = True
-    profile.is_superuser = True
-    profile.save()
-    return redirect('/xyz_register')
+    if request.method == 'POST':
+        adusernames = request.POST.get('adusername')
+        adpassword = request.POST.get('adpassword')
+        profile = User.objects.create_user(username=adusernames, password=adpassword)
+        profile.is_staff = True
+        profile.is_superuser = True
+        profile.save()
+        return redirect('/abcregister')
+    else:
+        return redirect('/')

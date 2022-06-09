@@ -1,383 +1,72 @@
 body {
-    height: 250vh;
-    background-color: #ffffff;
+    background-image: url(../image/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.reg-logo {
-    width: 100px;
-    height: 100px;
+.cont {
+    height: 100vh;
 }
 
-.conts {
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-    border: solid 1px #000000;
-    background-color: rgb(255, 255, 255);
-    padding: 10px;
-    height: 240vh;
+.out {
+    background-color: rgb(166, 172, 173);
+    height: 94vh;
+    width: 40%;
+    margin: auto;
+    border-radius: 5px;
 }
 
-.header {
-    text-align: left;
+.inner {
+    width: 90%;
+    height: 75vh;
+    margin: auto;
 }
 
-
-/* ONEEEEEEEEEEEEEEEEE */
-
-.one label {
-    font-size: 16px;
+.inputs {
+    width: 100%;
+    border-radius: 5px;
 }
 
-.username {
-    width: 59.3%;
-    float: right;
-    margin-right: 20%;
-    height: 22px;
+.tit {
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: center;
+    color: rgb(255, 255, 255);
 }
 
-.password1 {
-    width: 59.3%;
-    float: right;
-    margin-right: 20%;
-    height: 22px;
+label {
+    color: rgb(0, 0, 0);
+    font-size: 12px;
 }
 
-.password2 {
-    width: 59.3%;
-    float: right;
-    margin-right: 20%;
-    height: 22px;
-}
-
-.department {
-    width: 60%;
-    float: right;
-    margin-right: 20%;
-    height: 22px;
-}
-
-.school {
-    width: 60%;
-    float: right;
-    margin-right: 20%;
-    height: 22px;
-}
-
-.course {
-    width: 60%;
-    float: right;
-    margin-right: 20%;
-    height: 22px;
-}
-
-.year {
-    width: 60%;
-    float: right;
-    margin-right: 20%;
-    height: 22px;
-}
-
-
-/* EOF ONE */
-
-
-/* TWOOOOOOOOOOO */
-
-.two label {
-    font-size: 16px;
-}
-
-.names {
-    font-size: 15px;
-    height: 20px;
-    margin-left: 30px;
-    width: 220px;
-}
-
-.extention {
-    font-size: 15px;
-    height: 25px;
-    width: 100px;
-    float: right;
-    margin-right: 30px;
-}
-
-
-/* EOF TWOO */
-
-
-/* DIVISIOOOOOOON */
-
-.left {
-    width: 50%;
-    float: left;
-}
-
-.right {
-    width: 50%;
-    float: right;
-}
-
-.division {
-    font-size: 16px;
+.btn {
     width: 100%;
 }
 
-.birthday {
-    font-size: 15px;
-    height: 25px;
-    width: 352px;
-    float: right;
-    margin-right: 30px;
-}
-
-.birthplace {
-    font-size: 15px;
-    height: 25px;
-    width: 350px;
-    float: right;
-    margin-right: 30px;
-}
-
-.gender {
-    font-size: 15px;
-    height: 30px;
-    width: 358px;
-    float: right;
-    margin-right: 30px;
-}
-
-.email {
-    font-size: 15px;
-    height: 25px;
-    width: 350px;
-    float: right;
-    margin-right: 30px;
-}
-
-.religion {
-    font-size: 15px;
-    height: 30px;
-    width: 358px;
-    float: right;
-    margin-right: 30px;
-}
-
-.age {
-    font-size: 15px;
-    height: 25px;
-    width: 350px;
-    float: right;
-    margin-right: 30px;
-}
-
-.cpnumber {
-    font-size: 15px;
-    height: 25px;
-    width: 350px;
-    float: right;
-    margin-right: 30px;
-}
-
-.civil {
-    font-size: 15px;
-    height: 30px;
-    width: 358px;
-    float: right;
-    margin-right: 30px;
+.ques p {
+    margin-top: 10px;
+    text-align: center;
 }
 
 
-/* EOF DIVISION */
+/* upload */
 
-
-/* DIVISIOOOOOOOOOOOON 2 */
-
-.left2 {
-    width: 50%;
-    float: left;
+.uploads {
+    margin-top: 5px;
+    font-size: 16px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px black;
+    width: 100%;
+    outline: none;
 }
 
-.right2 {
-    width: 50%;
-    float: right;
-}
-
-.municipality {
-    font-size: 15px;
-    height: 25px;
-    width: 350px;
-    float: right;
-    margin-right: 30px;
-}
-
-.province {
-    font-size: 15px;
-    height: 25px;
-    width: 350px;
-    float: right;
-    margin-right: 30px;
-}
-
-.unit {
-    font-size: 15px;
-    height: 25px;
-    width: 350px;
-    float: right;
-    margin-right: 30px;
-}
-
-.street {
-    font-size: 15px;
-    height: 25px;
-    width: 350px;
-    float: right;
-    margin-right: 30px;
-}
-
-.barangay {
-    font-size: 15px;
-    height: 25px;
-    width: 350px;
-    float: right;
-    margin-right: 30px;
-}
-
-.perma {
-    font-weight: bolder;
-}
-
-
-/* EOF DIVISION 2 */
-
-
-/* DIVISION 3 */
-
-.left3 {
-    width: 50%;
-    float: left;
-}
-
-.right3 {
-    width: 50%;
-    float: right;
-}
-
-.father {
-    font-size: 15px;
-    height: 25px;
-    width: 350px;
-    float: right;
-    margin-right: 30px;
-}
-
-.fcontact {
-    font-size: 15px;
-    height: 25px;
-    width: 350px;
-    float: right;
-    margin-right: 30px;
-}
-
-.foccupation {
-    font-size: 15px;
-    height: 25px;
-    width: 350px;
-    float: right;
-    margin-right: 30px;
-}
-
-.mother {
-    font-size: 15px;
-    height: 25px;
-    width: 350px;
-    float: right;
-    margin-right: 30px;
-}
-
-.mcontact {
-    font-size: 15px;
-    height: 25px;
-    width: 350px;
-    float: right;
-    margin-right: 30px;
-}
-
-.moccupation {
-    font-size: 15px;
-    height: 25px;
-    width: 350px;
-    float: right;
-    margin-right: 30px;
-}
-
-.guardian {
-    font-size: 15px;
-    height: 25px;
-    width: 350px;
-    float: right;
-    margin-right: 30px;
-}
-
-.gcontact {
-    font-size: 15px;
-    height: 25px;
-    width: 350px;
-    float: right;
-    margin-right: 30px;
-}
-
-.goccupation {
-    font-size: 15px;
-    height: 25px;
-    width: 350px;
-    float: right;
-    margin-right: 30px;
-}
-
-.income {
-    font-size: 15px;
-    height: 30px;
-    width: 320px;
-    float: right;
-    margin-right: 30px;
-}
-
-.submit {
-    float: right;
-    height: 60px;
-    width: 100px;
-    color: #fbaa3f;
-    font-size: 20px;
-    font-weight: bolder;
-    background-color: transparent;
-    border-color: transparent;
-}
-
-.sb {
-    float: right;
-    font-size: 50px;
-    color: #fbaa3f;
-    background-color: #c7232b;
-}
-
-.file {
-    font-size: 15px;
-    height: 30px;
-    width: 320px;
-    float: right;
-    margin-right: 30px;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.hint {
-    font-size: 0.8em;
-    color: #800;
+::-webkit-file-upload-button {
+    color: white;
+    background: #206a5d;
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 0 1px 1px #6b4559;
+    outline: none;
 }

@@ -17,7 +17,11 @@
             <div class="text">Send Email</div>
             <button type="submit" class="btn btn-info" id="btn"><i class="bi bi-envelope">  Send Email</i></button>
         </div>
-        <hr>
+        <hr> {% if messages %} {% for message in messages %}
+        <div class="alert alert-success" role="alert" id="msg">
+            {{ message }}
+        </div>
+        {% endfor %} {% endif %}
         <div>
             <table class="table table-hover">
                 <thead>

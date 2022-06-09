@@ -6,334 +6,90 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="{% static 'css/registration.css' %}" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/f7e681d53d.js" crossorigin="anonymous"></script>
     <title>registration</title>
 </head>
 
 <body>
-    {% comment %} {% include 'activities/messages.html'%} {% endcomment %}
-    <div class="conts">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: rgb(153, 153, 153) !important;">
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'image/logo.png' %}" width="30" height="30" alt=""> e-Scholarship
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <form action="{% url 'activities:register' %}" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
 
-            <h1 class="header"><i class="fa-solid fa-user" style="color: #fbaa3f"></i> Personal Information</h1>
-            <hr>
-            <br>
-            <div class="one">
-                <div class="detail8">
-                    <label for="department">Department:</label>
-                    <select class="department" name="department" id="department" required>
-                        <option disabled selected>Department</option>
-                    <option value="HighSchool">Highschool</option>
-                    <option value="College">College</option>
-                  </select>
-                </div><br>
-                <div class="detail6">
-                    <label for="school">School:</label>
-                    <select class="school" name="school" id="school" required>
-                        <option disabled selected>School</option>
-                    <option value="MINSCAT(Main)">Mindoro State University (Main Campus)</option>
-                    <option value="MINSCAT (Calapan)">Mindoro State University (Calapan)</option>
-                  </select>
-                </div><br>
-                <div class="detail3">
-                    <label for="course">Course:</label>
-                    <input type="text" class="course" name="course">
-                </div><br>
-                <div class="detail4">
-                    <label for="year">Year:</label>
-                    <select class="year" name="year" id="year" required>
-                        <option disabled selected>Year / Grade Level</option>
-                        <option value="Grade 7">Grade 7</option>
-                        <option value="Grade 8">Grade 8</option>
-                        <option value="Grade 9">Grade 9</option>
-                        <option value="Grade 10">Grade 10</option>
-                        <option value="Grade 11">Grade 11</option>
-                        <option value="Grade 12">Grade 12</option>
-                    <option value="1st Year">1st Year College</option>
-                    <option value="2nd Year">2nd Year College</option>
-                    <option value="3rd Year">3rd Year College</option>
-                    <option value="4th Year">4th Year College</option>
-                    <option value="5th Year">5th Year College</option>
-                   
-                  </select>
-                </div><br>
-                <div class="idnum">
 
-                    <label for="username">ID Number: </label>
-                    <input type="text" name="username" class="username" required placeholder="ID Number"><br><br> {% comment %}
-                    <div class="txt" style="text-align: center; color:#f30000" id="msg">
-                        {% for msg in messages %} {{msg}} {% endfor %}
+            </ul>
 
-                    </div> {% endcomment %}
-                </div><br>
-                <div>
-                    <label for="password">Password</label>
-                    <input type="password" name="password1" class="password1" placeholder="Password" id="password1" required><br><br>
-                    <input type="password" name="password2" class="password2" placeholder="Confirm Password" id="password2" required onclick="">
-                </div>
-            </div><br><br>
-            <hr><br>
-            <br>
-            <div class="two">
-                <div class="name">
-                    <label for="names">Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </label>
-                    <input class="names" type="text" placeholder="First name" required name="firstname">
-                    <input class="names" type="text" placeholder="Last name" required name="lastname">
-                    <input class="names" type="text" placeholder="Middle name" required name="middlename">
-                    <select class="extention" name="extention" id="extention">
-                        <option disabled selected>Suffix</option>
-                        <option value="1st Year">Jr</option>
-                        <option value="2nd Year">I</option>
-                        <option value="2nd Year">II</option>
-                        <option value="2nd Year">III</option>
-                        <option value="2nd Year">IV</option>
-                        <option value="2nd Year">V</option>
-                      </select>
-                </div>
+        </div>
+    </nav>
+    <br>
+    <div class="cont">
 
-            </div><br>
-            <div class="division">
-                <div class="left">
-                    <div class="detail1">
-                        <label for="birthday">Birthday:</label>
-                        <input class="birthday" type="date" placeholder="birthdate" name="birthday" required>
+
+        <div class="out">
+            <h1 class="tit">Students Registration</h1>
+            <hr style="background-color: white;">
+            <div class="inner">
+                <form action="{% url 'activities:register' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %} {% if messages %} {% for message in messages %}
+                    <div class="alert alert-danger" role="alert" id="msg">
+                        {{ message }}
                     </div>
+                    {% endfor %} {% endif %}
+                    <label for="lastname">Last name: </label><br>
+                    <input type="text" placeholder="LAST NAME" id="lastname" class="inputs" required name="lastname">
+
+                    <label for="firstname">First name: </label><br>
+                    <input type="text" placeholder="FIRST NAME" id="firstname" class="inputs" required name="firstname">
+
+                    <label for="middlename">Middle name: </label><br>
+                    <input type="text" placeholder="MIDDLE NAME" id="middlename" class="inputs" name="middlename">
+
+                    <label for="idnumber">ID Number: </label><br>
+                    <input type="text" placeholder="ID NUMBER" id="idnumber" class="inputs" required name="username">
+
+                    <label for="password">PASSWORD: </label><br>
+                    <input type="password" placeholder="PASSWORD" id="password" class="inputs" required name="password">
+
+                    <label for="idnumber">CONFIRM PASSWORD: </label><br>
+                    <input type="password" placeholder="CONFIRM PASSWORD" id="password1" class="inputs" required name="password1">
+
+
+
+
+                    <label for="uploads">1X1 Picture: </label><br>
+
+                    <input class="uploads" type="file" name="picture"><br>
+
+
                     <br>
-                    <div class="detail2">
-                        <label for="birthplace">Birth Place:</label>
-                        <input type="text" class="birthplace" required name="birthplace">
-                    </div>
-                    <br>
-                    <div class="detail10">
-                        <label for="religion">Religion</label>
-                        <select class="religion" required name="religion">
-                            <option disabled selected>Religion</option>
-                            <option value="Roman Catholic">Roman Catholic</option>
-                            
-                            <option>Jehova's Witness</option>
-                            <option>Buddhist</option>
-                            <option>Dating Daan</option>
-                            <option>Pagano</option>
-                            <option>Atheist</option>
-                            <option>Muslim</option>
-                            <option>Born Again</option>
-                            <option>Baptist</option>
-                            <option>Mormons</option>
-                            <option>Free Methodist</option>
-                            <option>Christian</option>
-                            <option>Protestant</option>
-                            <option>Aglipay</option>
-                            <option>LDS</option>
-                            <option>Seventh Day Adventist</option>
-                            <option>Iglesia Ni Cristo</option>
-                            <option>NA</option>
-                        </select>
 
-                    </div><br>
-                    <div class="details12">
-                        <label for="cpnumber">Cellphone Number:</label>
-                        <input type="number" maxlength="11" class="cpnumber" name="cellphone" id="cpnumber" required>
-                        <span class="hint" id="textarea_message"></span>
+
+
+                    <button type="submit" class="btn btn-success">Register</button>
+
+                    <div class="ques">
+                        <p>Already have an Account? <a href="/">Login</a></p>
+
                     </div>
 
 
-                </div>
-                <div class="right">
-                    <div class="detail7">
-                        <label for="gender">Gender:</label>
-                        <select class="gender" name="gender" id="gender" required>
-                            <option disabled selected>Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                      </select>
-                    </div><br>
-                    <div class="detail11">
-                        <label for="age">Age:</label>
-                        <input type="number" name="age" class="age" required>
-                    </div><br>
-                    <div class="detail4">
-                        <label for="email">Email:</label>
-                        <input type="email" name="email" class="email" required> {% comment %}
-                        <div class="txt" style="text-align: center; color:#f30000" id="msg">
-                            {% for msg in messages %} {{msg}} {% endfor %}
-
-                        </div> {% endcomment %}
-                    </div><br>
-                    <div class="detail3">
-                        <label for="civil">Civil Status:</label>
-                        <select class="civil" name="civil">
-                            <option disabled selected>Relationship Status</option>
-                            <option value="Single">Single</option>
-                            <option value="Married">Married</option>
-                            <option value="Legally Seperated">Legally Separated</option>
-                            <option value="Widowed">Widowed</option>
-
-                        </select>
-                    </div><br>
-                </div>
-
+                </form>
             </div>
-            <br><br>&nbsp;<br><br>
-            <hr>&nbsp;<br><br>
-            <div class="division2">
-                <p class="perma">Permanent Address</p>
-                <div class="left2">
 
-                    <div class="brgy">
-                        <label for="barangay">Barangay:</label>
-                        <input type="text" name="barangay" class="barangay" placeholder="barangay" required>
-
-                    </div>
-
-                </div>
-                <div class="right2">
-                    <div class="muni">
-                        <label for="municipality">Municipality:</label>
-                        <input type="text" class="municipality" required name="municipality" placeholder="Municipality">
-
-                    </div><br>
-                    <div class="prov">
-                        <label for="province">Province</label>
-                        <input type="text" class="province" required name="province" placeholder="Province">
-                    </div>
-
-                </div>
-
-            </div><br><br>&nbsp;<br><br>&nbsp;<br><br>&nbsp;<br><br>
-            <hr>
-            <h1 class="header"><i class="fa-solid fa-users" style="color: #fbaa3f"></i> Family Background</h1>
-
-            <hr>
-            <br>
-            <div class="division3">
-                <div class="left3">
-                    <div>
-                        <p class="perma">FATHER</p>
-                        <label for="father">Name:</label>
-                        <input type="text" class="father" name="father" placeholder="Father's Name">
-                    </div><br>
-                    <div>
-                        <label for="fcontact">Contact Number:</label>
-                        <input type="number" class="fcontact" name="fcontact" placeholder="Father's contact number">
-
-                    </div><br>
-                    <div>
-                        <label for="faccupation">Occupation:</label>
-                        <input type="text" name="foccupation" class="foccupation" placeholder="Father's Work">
-                    </div>
-
-
-
-
-                </div>
-                <div class="right3">
-                    <div>
-                        <p class="perma">MOTHER</p>
-                        <label for="mother">Name:</label>
-                        <input type="text" class="mother" name="mother" placeholder="Mother's Name">
-                    </div><br>
-                    <div>
-                        <label for="mcontact">Contact Number:</label>
-                        <input type="number" class="mcontact" name="mcontact" placeholder="Mother's contact number">
-
-                    </div><br>
-                    <div>
-                        <label for="maccupation">Occupation:</label>
-                        <input type="text" name="moccupation" class="moccupation" placeholder="Mother's Work">
-                    </div>
-
-                </div>
-
-            </div><br>&nbsp;
-            <hr>
-            <div class="left3">
-                <div>
-                    <p class="perma">GUARDIAN</p>
-                    <label for="guardian">Name:</label>
-                    <input type="text" class="guardian" name="guardian" placeholder="Guardian's Name">
-                </div><br>
-                <div>
-                    <label for="gcontact">Contact Number:</label>
-                    <input type="number" class="gcontact" name="gcontact" placeholder="Guardian's contact number">
-
-                </div><br>
-                <div>
-                    <label for="gaccupation">Occupation:</label>
-                    <input type="text" name="goccupation" class="goccupation" placeholder="Guardian's Work">
-                </div>
-
-            </div><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
-            <hr>
-            <br>
-            <div class="left3">
-                <div>
-                    <label for="income">Income Bracket per year:</label>
-                    <select class="income" name="income">
-                        <option disabled selected>Income</option>
-                            <option value="less than 50k">Not more than 50k</option>
-                            <option value="less than 100k">Not more than 100k</option>
-                            <option value="less than 200k">Not more than 200k</option>
-                            <option value="less than 300k">Not more than 300k</option>
-                            <option value="400k above">400k Above</option>
-                        </select>
-                </div><br>
-                <div>
-                    <label for="file">1x1 Picture:</label>
-                    <input type="file" class="file" name="picture">
-                </div>
-            </div>
-            <div class="right3">
-                <button class="sb"><input type="submit"  onclick="Validate(), click()" class="submit" style="text-decoration: none;" ><i class="fa-solid fa-floppy-disk"></i></button>
-
-            </div>
-        </form>
+        </div>
     </div>
 
 
 
-    <script type="text/javascript">
-        function Validate() {
-            var password = document.getElementById("password1").value;
-            var confirmPassword = document.getElementById("password2").value;
-            if (password != confirmPassword) {
-                alert("Passwords do not match.");
-                return false;
-            }
-            return true;
-        }
-    </script>
-    <script>
-        document.getElementById('msg')
-        setTimeout(function() {
-            document.getElementById('msg').innerHTML = '';
-        }, 8000);
-    </script>
-    <script>
-        $('input#cpnumber').on('keyup', function() {
-            var maxlen = $(this).attr('maxlength');
-
-            var length = $(this).val().length;
-            if (length > (maxlen - 10)) {
-                $('#textarea_message').text('max length ' + maxlen + ' characters only!')
-            } else {
-                $('#textarea_message').text('sheeesh');
-            }
-        });
-    </script>
-
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-        { %
-            for msg in messages %
-        }
-        swal('{{msg}}') { % endfor %
-        }
-    </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 </body>
 
 </html>
