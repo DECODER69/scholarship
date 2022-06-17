@@ -318,3 +318,40 @@ def adregister(request):
         return redirect('/abcregister')
     else:
         return redirect('/')
+
+def editfile(request):
+    info1 = extenduser.objects.filter(user=request.user.id)
+    return render(request, 'activities/edit.html', {'info1':info1})
+    
+def editable(request):
+    info = extenduser.objects.filter(user=request.user.id)
+    if request.method =='POST':
+        department = request.POST.get('department')
+        school = request.POST.get('school')
+        course = request.POST.get('course')
+        year = request.POST.get('year')
+        birthday = request.POST.get('birthday')
+        religion = request.POST.get('religion')
+        cellphone = request.POST.get('cellphone')
+        gender = request.POST.get('gender')
+        age = request.POST.get('age')
+        email = request.POST.get('email')
+        civil = request.POST.get('civil')
+        barangay = request.POST.get('barangay')
+        municipality = request.POST.get('municipality')
+        province = request.POST.get('province')
+        father = request.POST.get('father')
+        fcontact = request.POST.get('fcontact')
+        foccupation = request.POST.get('foccupation')
+        mother = request.POST.get('mother')
+        mcontact = request.POST.get('mcontact')
+        moccupation = request.POST.get('moccupation')
+        guardian = request.POST.get('guardian')
+        gcontact = request.POST.get('gcontact')
+        goccupation = request.POST.get('goccupation')
+        income = request.POST.get('income')
+
+        extenduser.objects.filter(user=request.user).update(department=department, school=school, course=course, year=year, birthday=birthday,  religion=religion, cellphone=cellphone,gender=gender, age=age,email=email, civil=civil,  barangay=barangay, municipality=municipality, province=province,fname=father, fcontact=fcontact, foccupation=foccupation, mname=mother, mcontact=mcontact, moccupation=moccupation, gname=guardian, gcontact=gcontact, goccupation=goccupation, income=income)
+        return redirect('/editprofile')
+    return render (request, 'activities/editprofile.html', {'info':info})
+    

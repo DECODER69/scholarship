@@ -5,12 +5,12 @@ body {
 }
 
 .cont {
-    height: 100vh;
+    height: 120vh;
 }
 
 .out {
     background-color: rgb(166, 172, 173);
-    height: 94vh;
+    height: 110vh;
     width: 40%;
     margin: auto;
     border-radius: 5px;

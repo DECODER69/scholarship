@@ -44,4 +44,6 @@ urlpatterns = [
     path('abcregister/', views.abcregister, name='abcregister'),
     path('adregister/', views.adregister, name='adregister'),
     path('nots/', views.nots, name='nots'),
+    path('editfile/', views.editfile, name='editfile'),
+    path('editable/', views.editable, name='editable'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
