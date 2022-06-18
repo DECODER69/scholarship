@@ -101,85 +101,105 @@
         <div class="conts">
 
 
+            {% for p in edit %}
+            <div class="inner">
+                <a href="/editfile" style="text-decoration: none;" class="edi" target="_self"><i class="bi bi-pencil-square"></i>   Edit Profile</a>
 
-            <form action="{% url 'activities:edit' %}" method="POST" enctype="multipart/form-data">
-                {% csrf_token %} {% for p in edit %}
-                <div class="inner">
-                    <a href="/editfile" style="text-decoration: none;" class="edi" target="_self"><i class="bi bi-pencil-square"></i>   Edit Profile</a>
+                <div class="left">
 
-                    <div class="left">
+                    <img src="{{p.picture.url}}" alt="profile-pic" style="width: 150px; height:150px; " class="profile"><br><br><br>
 
-                        <img src="{{p.picture.url}}" alt="profile-pic" style="width: 150px; height:150px; " class="profile"><br><br><br>
+                    <h class="name">{{p.firstname}} {{p.lastname}}</h><br>
+                    <label for="name" id="label">e-Scholarship Benefactor</label>
+                </div>
 
-                        <h class="name">{{p.firstname}} {{p.lastname}}</h><br>
-                        <label for="name" id="label">e-Scholarship Benefactor</label>
-                    </div>
+                <div class="right">
+                    <!-- <h class="name">{{p.firstname}} {{p.lastname}}</h><br> -->
+                    <label for="name" id="label"> Personal Information</label>
+                    <hr style="width: 100%;"><br>
+                    <div class="about">
+                        <label>Email</label>
+                        <p class="email">{{p.email}}</p>&nbsp;<br>
 
-                    <div class="right">
-                        <!-- <h class="name">{{p.firstname}} {{p.lastname}}</h><br> -->
-                        <label for="name" id="label"> Personal Information</label>
+                        <label>Cellphone</label>
+                        <p class="email">{{p.cellphone}}</p>&nbsp;<br>
+
+                        <label>Age</label>
+                        <p class="email">{{p.age}}</p>&nbsp;<br>
+
+                        <label>Civil Status</label>
+                        <p class="email">{{p.civil}}</p>&nbsp;<br>
+
+                        <label>Address</label>
+                        <p class="email">{{p.barangay}} {{p.municipality}} {{p.province}}</p>&nbsp;<br>
+
+                        <label>Birthday</label>
+                        <p class="email">{{p.birthday}}</p>&nbsp;<br>
+
+                        <label>Religion</label>
+                        <p class="email">{{p.religion}}</p>&nbsp;<br>
+
+                        <label>Gender</label>
+                        <p class="email">{{p.gender}}</p>&nbsp;<br>&nbsp;<br>
+
+
+                        <br><br>
+                        <label for="name" id="label"> School Background</label>
                         <hr style="width: 100%;"><br>
-                        <div class="about">
-                            <label>Email</label>
-                            <p class="email">{{p.email}}</p>&nbsp;<br>
 
-                            <label>Cellphone</label>
-                            <p class="email">{{p.cellphone}}</p>&nbsp;<br>
+                        <label>School</label>
+                        <p class="email">{{p.school}}</p>&nbsp;<br>
 
-                            <label>Age</label>
-                            <p class="email">{{p.age}}</p>&nbsp;<br>
+                        <label>Department</label>
+                        <p class="email">{{p.department}}</p>&nbsp;<br>
 
-                            <label>Civil Status</label>
-                            <p class="email">{{p.civil}}</p>&nbsp;<br>
+                        <label>Course</label>
+                        <p class="email">{{p.course}}</p>&nbsp;<br>
 
-                            <label>Address</label>
-                            <p class="email">{{p.barangay}} {{p.municipality}} {{p.province}}</p>&nbsp;<br>
-
-                            <label>Birthday</label>
-                            <p class="email">{{p.birthday}}</p>&nbsp;<br>
-
-                            <label>Religion</label>
-                            <p class="email">{{p.religion}}</p>&nbsp;<br>
-
-                            <label>Gender</label>
-                            <p class="email">{{p.gender}}</p>&nbsp;<br>&nbsp;<br>
+                        <label>Year</label>
+                        <p class="email">{{p.year}}</p>&nbsp;<br>&nbsp;<br>
 
 
 
-
-
-
-                            <label for="name" id="label"> Family Background</label>
-                            <hr style="width: 100%;"><br>
-                            <!-- 
+                        <label for="name" id="label"> Family Background</label>
+                        <hr style="width: 100%;"><br>
+                        <!-- 
                             father -->
-                            <label>Father's Name</label>
-                            <p class="email">{{p.fname}}</p>&nbsp;<br>
+                        <label>Father's Name</label>
+                        <p class="email">{{p.fname}}</p>&nbsp;<br>
 
-                            <label>Father's Contact</label>
-                            <p class="email">{{p.fcontact}}</p>&nbsp;<br>
+                        <label>Father's Contact</label>
+                        <p class="email">{{p.fcontact}}</p>&nbsp;<br>
 
-                            <label>Father's Occupation</label>
-                            <p class="email">{{p.foccupation}}</p>&nbsp;<br>
+                        <label>Father's Occupation</label>
+                        <p class="email">{{p.foccupation}}</p>&nbsp;<br>&nbsp;<br>
 
-                            <!-- MOTHER -->
+                        <!-- MOTHER -->
 
-                            <label>Mother's Name</label>
-                            <p class="email">{{p.mname}}</p>&nbsp;<br>
+                        <label>Mother's Name</label>
+                        <p class="email">{{p.mname}}</p>&nbsp;<br>
 
-                            <label>Mother's Contact</label>
-                            <p class="email">{{p.mcontact}}</p>&nbsp;<br>
+                        <label>Mother's Contact</label>
+                        <p class="email">{{p.mcontact}}</p>&nbsp;<br>
 
-                            <label>Mother's Occupation</label>
-                            <p class="email">{{p.moccupation}}</p>&nbsp;<br>
-                            <hr style="width: 100%;"><br>
-
-
-                            <label>Family Income</label>
-                            <p class="email">{{p.income}}</p>&nbsp;<br>
+                        <label>Mother's Occupation</label>
+                        <p class="email">{{p.moccupation}}</p>&nbsp;<br>&nbsp;<br>
 
 
 
+                        <label>Guardian's Name</label>
+                        <p class="email">{{p.gname}}</p>&nbsp;<br>
+
+                        <label>Guardian's Contact</label>
+                        <p class="email">{{p.gcontact}}</p>&nbsp;<br>
+
+                        <label>Guardian's Occupation</label>
+                        <p class="email">{{p.goccupation}}</p>&nbsp;<br>
+
+                        <hr style="width: 100%;"><br>
+
+                        <label>Family Income</label>
+                        <p class="email">{{p.income}}</p>&nbsp;<br>
 
 
 
@@ -188,20 +208,23 @@
 
 
 
-                        </div>
+
+
 
                     </div>
-
 
                 </div>
 
 
+            </div>
 
 
 
 
-                {% endfor %}
-            </form>
+
+
+            {% endfor %}
+
         </div>
 
         <!-- 

@@ -1,5 +1,6 @@
 from dataclasses import field
 from email import message
+from importlib.resources import path
 from os import name
 
 from django.contrib import messages 
@@ -311,11 +312,15 @@ def adregister(request):
     if request.method == 'POST':
         adusernames = request.POST.get('adusername')
         adpassword = request.POST.get('adpassword')
-        profile = User.objects.create_user(username=adusernames, password=adpassword)
-        profile.is_staff = True
-        profile.is_superuser = True
-        profile.save()
-        return redirect('/abcregister')
+        if User.objects.filter(username=adusernames).exists():
+            messages.error(request, 'Username ' + str (adusernames) + ' Already Exist !')
+            return redirect('/abcregister')
+        else:
+            profile = User.objects.create_user(username=adusernames, password=adpassword)
+            profile.is_staff = True
+            profile.is_superuser = True
+            profile.save()
+            return redirect('/abcregister')
     else:
         return redirect('/')
 
@@ -350,8 +355,11 @@ def editable(request):
         gcontact = request.POST.get('gcontact')
         goccupation = request.POST.get('goccupation')
         income = request.POST.get('income')
-
+        picture = request.FILES['picture']
+    
         extenduser.objects.filter(user=request.user).update(department=department, school=school, course=course, year=year, birthday=birthday,  religion=religion, cellphone=cellphone,gender=gender, age=age,email=email, civil=civil,  barangay=barangay, municipality=municipality, province=province,fname=father, fcontact=fcontact, foccupation=foccupation, mname=mother, mcontact=mcontact, moccupation=moccupation, gname=guardian, gcontact=gcontact, goccupation=goccupation, income=income)
+
+        
         return redirect('/editprofile')
     return render (request, 'activities/editprofile.html', {'info':info})
     

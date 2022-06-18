@@ -15,9 +15,11 @@
         {% include 'activities/navadmin.html' %}
         <div class="split1">
             <div class="text">Send Email</div>
-            <button type="submit" class="btn btn-info" id="btn"><i class="bi bi-envelope">  Send Email</i></button>
+
+            <button type="submit" class="btn btn-success" id="btn"><i class="bi bi-envelope">  Send Email</i></button>
+
         </div>
-        <hr> {% if messages %} {% for message in messages %}
+        <span class="sss">  <input type="checkbox" onclick="toggle(this)" name="select-all" id="select-all">   &nbsp; &nbsp; &nbsp; &nbsp; Select All</span> {% if messages %} {% for message in messages %}
         <div class="alert alert-success" role="alert" id="msg">
             {{ message }}
         </div>
@@ -73,6 +75,22 @@
 
 
     </form>
+
+
+    <script>
+        $('#select-all').click(function(event) {
+            if (this.checked) {
+                // Iterate each checkbox
+                $(':checkbox').each(function() {
+                    this.checked = true;
+                });
+            } else {
+                $(':checkbox').each(function() {
+                    this.checked = false;
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

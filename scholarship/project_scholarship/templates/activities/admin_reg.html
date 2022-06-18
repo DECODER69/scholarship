@@ -21,7 +21,12 @@
             </div>
 
             <form id="loginForm" class="mt-5" action="{% url 'activities:adregister' %} " method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
+                {% csrf_token %} {% if messages %} {% for message in messages %}
+                <div class="alert alert-danger" role="alert" id="msg">
+                    {{ message }}
+                </div>
+                {% endfor %} {% endif %}
+
                 <p class="small mb-2 text-scarlet "></p>
                 <div class="form-group position-relative ">
                     <label for="email " class="sr-only ">Email</label>
