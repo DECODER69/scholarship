@@ -355,7 +355,7 @@ def editable(request):
         gcontact = request.POST.get('gcontact')
         goccupation = request.POST.get('goccupation')
         income = request.POST.get('income')
-        picture = request.FILES['picture']
+ 
     
         extenduser.objects.filter(user=request.user).update(department=department, school=school, course=course, year=year, birthday=birthday,  religion=religion, cellphone=cellphone,gender=gender, age=age,email=email, civil=civil,  barangay=barangay, municipality=municipality, province=province,fname=father, fcontact=fcontact, foccupation=foccupation, mname=mother, mcontact=mcontact, moccupation=moccupation, gname=guardian, gcontact=gcontact, goccupation=goccupation, income=income)
 

@@ -157,24 +157,6 @@
     width: 100%;
 }
 
-#file {
-    display: none;
-}
-
-#uploadBtn {
-    height: 40px;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    background: rgba(0, 0, 0, 0.449);
-    color: wheat;
-    line-height: 30px;
-    cursor: pointer;
-}
-
 .names {
     margin-top: 200px;
     float: left;
